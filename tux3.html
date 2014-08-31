@@ -1,0 +1,693 @@
+<html>
+<head>
+  <title>A Visual Expedition Inside the Linux File Systems - Linux Kernel 2.6.29 + tux3</title>
+  <meta name="author" content="Razvan Musaloiu-E." />
+  <meta name="keywords" content="file systems visual expedition filesystems" />
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body><div id="everything">
+
+<h1>Linux Kernel 2.6.29 + tux3</h1>
+
+<p>In this section we are going to explore a certain version of the
+  Linux Kernel, the <em>tux3</em> branch from March 14, 2009.  This
+  version contains the Linux tree up to March 10. The 2.6.29 was
+  released on March 23 so this is not exactly the final version. I
+  picked it because it contains <em>btrfs</em> and, at the time of
+  writing this report, it is the latest one that was published by
+  Daniel Phillips, the creator of the <em>tux3</em>.</p>
+
+<p>The rest of this section is made up exclusively of figures
+  accompanied by extensive captions.</p>
+
+<hr style="margin-top: 3em;" class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="map" id="map"><span class="sans"><b>Map of the external symbols.</b></span></a>
+
+    This plot shows the external symbols for 55 kernel modules from
+    the <em>tux3</em> git repository. Each tick represents an external
+    symbol. The file systems are show in alphabetical order. The big
+    compact chunks of external symbols related to <em>jbd</em>
+    and <em>jbd2</em> are visible for <em>ext3</em>
+    and <em>ext4</em>. The fact that <em>ocfs2</em> is also making use
+    of <em>jbd2</em> is also noticeable. Later in this section we will
+    see how this representation looks when is reorganized based on
+    similarities between file systems.
+
+  </div>
+  <img src="summary.tux3.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="extsyms" id="extsyms"><span class="sans"><b>Number of external symbols.</b></span></a>
+
+    This plot shows the ranking of the file systems based on the
+    number of external symbols. We can see that the range is about 300
+    symbols and there are no sudden jumps: some sizes are more popular
+    than others but overall the space is filled quite smoothly.
+
+  </div>
+  <img src="summary.tux3.fs.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="extsyms-by-category" id="extsyms-by-category"><span class="sans"><b>Number of external symbols by categories.</b></span></a>
+
+    This is the same plot as the previous one except this time the
+    file systems are grouped in categories.
+
+    <br /><br />
+
+    The first group, which contains the disk-based file systems, is
+    led by <em>ext4</em> which is ahead of <em>xfs</em> by 45
+    external symbols. Note that the number of external symbols for
+    both <em>ext4</em> and <em>ext3</em> is boosted by the fact the
+    journaling part not implemented internally but provided
+    by <em>jbd2</em> and <em>jbd</em> respectively. At the other end
+    of the scale is a group of 4 file systems out of which only
+    two, <em>freevxfs</em> and <em>qnx4</em> are truly
+    self-contained. The other two, <em>msdos</em> and <em>vfat</em> are
+    getting most of their functionality from the <em>fat</em> module
+    which is more than twice of their size.
+
+    <br /><br />
+
+    The second group contains the file systems dedicated to optical
+    mediums and it holds no surprises: <em>udf</em> is ahead
+    of <em>isofs</em> by a comfortable margin.
+
+    <br /><br />
+
+    The same thing is also true for the the third group, of the
+    flash-based file systems, where the first place is taken
+    by <em>ubifs</em> followed by <em>jffs2</em>. The third placed is
+    secured by <em>squashfs</em> while the bottom is shared
+    by <em>cramfs</em> and <em>romfs</em> which are separated by only
+    5 symbols.
+
+    <br /><br />
+
+    The fourth group is the one dedicated to the network file
+    systems. Here the first two spots are taken by <em>nfs</em>
+    and <em>nfsd</em>, which provide kernel support for NFS client and
+    NFS server. On the next two places, at very close distance between
+    them, are <em>kafs</em>, the Andrew File System,
+    and <em>cifs</em>. The end is shared by <em>coda</em>
+    and <em>9p</em>.
+
+    <br /><br />
+
+    The fifth group contains, in this order, the only two
+    cluster-based file systems: <em>ocfs2</em> and <em>gfs2</em>. The
+    number of external symbols for <em>ocfs2</em> is increased due to
+    the use of the <em>jbd2</em> journaling library.
+
+    <br /><br />
+
+    The sixth group, the one dedicated to memory-based file systems is
+    dominated authoritatively by <em>proc</em> which has almost 100
+    more external symbols than <em>fuse</em>, the file system from the
+    second place. As expected, at the bottom sits <em>ramfs</em>.
+
+    <br /><br />
+
+    The seventh and last group is dedicated to ancient file
+    systems. The first place is shared by <em>hfs</em>
+    and <em>ufs</em>. Quite surprising, this is only one of the three
+    ties in this group, the other two
+    being <em>hpfs</em>/<em>minix</em> and <em>adfs</em>/<em>bfs</em>.
+  </div>
+  <img src="summary.tux3.fs-cat.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="popular-50" id="popular-50"><span class="sans"><b>The 50 most popular external symbols.</b></span></a>
+
+    The symbols are sorted in the descending order of their frequency
+    while the file systems are sorted in the descending order of
+    number of external symbols they use.
+
+    <br /><br />
+
+    The first two symbols are used by the function tracer. On the
+    third place we have a tie between <em>kfree</em>, which is used by
+    everybody except by <em>ramfs</em>, <em>msdos</em>
+    and <em>romfs</em>, and <em>kprintf</em> which, surprising, is
+    avoided by <em>vfat</em>, <em>ramfs</em> and <em>msdos</em>.
+
+    <br /><br />
+
+    As expected, the kmem operations are among the most popular
+    one. So are the some basic operations
+    like <em>strlen</em>, <em>memcmp</em> and <em>strsep</em>.
+
+    <br /><br />
+
+    Another thing we can notice are some (expected) pairs of calls that
+    are always used together:
+      <em>register_filesystem</em>/<em>unregister_filesystem</em>,
+      <em>_spin_lock</em>/<em>_spin_unlock</em> and
+      <em>kmap</em>/<em>kunmap</em>.
+
+    <br /><br />
+
+    Another (again expected) observation is that the lack
+    of <em>(un)register_filesystem</em> identifiers in the modules
+    which only provides services to
+    others: <em>dlm</em>, <em>lockd</em>, <em>fat</em>,
+    and <em>jbd2</em>/<em>jbd2</em>.
+  </div>
+  <img src="summary.tux3.big.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure"> 
+  <div class="caption">
+    <a name="hetamap" id="heatmap"><span class="sans"><b>Heatmap of the Hamming distances.</b></span></a>
+
+    If we think of each file systems as a string of bits with one
+    indicating the presence of a certain external symbol and zero as
+    the absence of it then the Hamming distance is the minimum number
+    of substitutions necessary to change one string into another. The
+    heatmap is symmetric. The red indicates a Hamming distance of
+    zero, which corresponds to maximum similarity, and yellow
+    indicates very little similarity. Everyone is similar with itself
+    so the diagonal is red.
+
+    In this plot the file systems are sorted in ascending order of
+    their number of external symbols.
+
+    What we are going to do next is to reorder the rows and columns in a
+    way that brings closer the file systems that are similar.
+  </div>
+  <img src="summary.tux3.heatmap.hamm.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="hclust" id="hclust"><span class="sans"><b>Hierarchical clustering.</b></span></a>
+
+    As the name implies, hierarchical clustering builds a hierarchy of
+    clusters. There are two ways to do this: one is to start from
+    bottom, with all the data points as clusters and then, at each
+    step, merge two of them. This is also know as <em>agglomerative
+    nesting</em>. The other one is called <em>divisive</em> and starts
+    from top, with everything in a big cluster, and at each steps
+    performs a split.
+
+    <br /><br />
+
+    Below is an example of clustering 11 points situated in a 2D
+    plane. Left is a <em>dendrogram</em>, a tree diagram usually used
+    to represent the result of a hierarchical clustering. Right is a
+    representation using nested clusters.
+
+  </div>
+  <img src="hclust-example.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="hclust-single" id="hclust-single"><span class="sans"><b>Single linkage.</b></span></a>
+
+    When all the clusters only contains one point we can easily define
+    the distance between them as the distance (<em>d</em>) between the
+    respective points. After each merge operation we need a way to
+    define the distance (<em>D</em>) between this new cluster and all
+    the old ones. One way to do this is to consider the distance
+    between two clusters as the minimum distance between any pair of
+    nodes with one node in a cluster and another one in the
+    other. Formally we could express this as <em>D</em>(A,B) = {
+    min(<em>d</em>(x,y)) | x &isin; A and y &isin; B }.
+
+  </div>
+  <img src="hclust-single.png" />
+  <div class="caption">
+
+    This method is best suited for constructing elongated clusters
+    like the ones below.
+
+  </div>
+  <img src="hclust-elongated-example.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="hclust-complete" id="hclust-complete"><span class="sans"><b>Complete linkage.</b></span></a>
+
+    In this case the distance between clusters is defined as the
+    maximum distance between the pairs of nodes which contain one
+    node from one cluster and one from the other. Similar with the
+    previous case, this could be express as <em>D</em>(A,B) = {
+    max(<em>d</em>(x,y)) | x &isin; A and y &isin; B }. This method is
+    capable of creating small and compact clusters.
+  </div>
+  <img src="hclust-complete.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="hclust-average" id="hclust-average"><span class="sans"><b>Group average.</b></span></a>
+
+    We can also define the distance between two clusters in such a way
+    that all the pairwise distances contribute to the result. If we
+    take the average of all the pairs then the method is
+    called <em>group average</em>.
+
+  </div>
+  <img src="hclust-average.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="hclust-ward" id="hclust-ward"><span class="sans"><b>Ward's method.</b></span></a>
+
+    This method works like this: for each cluster we compute the sum
+    of squared deviations from the cluster's centroid. Then we sum up
+    all these sums and get a total error sum. At each step we merge
+    the two clusters which minimize the increase of total error
+    sum.
+
+  </div>
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="hclust-mcquitty" id="hclust-mcquitty"><span class="sans"><b>McQuitty's method.</b></span></a>
+
+    In this method, after each merge, the distance between the new
+    cluster and the old ones are computed based on the distances of
+    the two clusters that were merged. In the example
+    below, two clusters, A and B, were merge and formed a new cluster
+    E. The distance <em>D</em><sub>3</sub> between E and another
+    cluster C is defined to be <em>D</em><sub>3</sub>=
+    (<em>size</em>(A)&times;<em>D</em><sub>1</sub>
+    + <em>size</em>(B)&times;<em>D</em><sub>2</sub>)/(<em>size</em>(A)
+    + <em>size</em>(B)). This method is also call WPGMA (Weighted Pair
+    Group Method with Arithmetic Mean).
+  </div>
+  <img src="hclust-mcquitty.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="heatmap-ward" id="heatmap-ward"><span class="sans"><b>Clustering using the Hamming distance and Ward's method.</b></span></a>
+
+    Let's now take a look at how the heatmap of the Hamming distances
+    we introduced earlier looks like when we reorder it using Ward's
+    algorithm. The most noticeable thing is the distinctive division
+    of the map the due
+    to <em>nfs</em>/<em>proc</em> and <em>nfsd</em>. Many things are
+    clustered in expected ways:
+    the <em>ext2</em>/<em>ext3</em>/<em>ext4</em> family (lower left
+    corner), the <em>coda</em>/<em>smbfs</em>/<em>ncpfs</em> network
+    file systems, the <em>jbd</em>/<em>jbd2</em> journaling services.
+
+  </div>
+  <img src="summary.tux3.heatmap.hamm.ward.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="dendrogram-ward" id="dendrogram-ward"><span class="sans"><b>Dendrogram of the clustering using Hamming distance and Ward's method.</b></span></a>
+
+    If we look only at the dendrogram we can notice that this method
+    divided the file systems in two big parts: complex disk-based
+    systems including cluster file systems (which contain a
+    disk-based part inside them), and everything else. We can also
+    observe that most of the ancient file system category is contained
+    almost completely in one big branch
+    (<em>fat</em>&ndash;<em>minix</em>). Some unusual
+    matches: <em>9p</em> is situated quite far from the rest of the
+    network file systems and <em>tux3</em> ends up keeping company to
+    the group of ancient file systems. In contrast, <em>btrfs</em>
+    enjoys the neighborhood of <em>xfs</em> and <em>gfs2</em> in the
+    upper class of complex file systems.
+
+  </div>
+  <img src="summary.tux3.hclust.hamm.ward.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="heatmap-complete" id="heatmap-complete"><span class="sans"><b>Clustering using the Hamming distance and complete linkage.</b></span></a>
+
+    Unlike the previous method, the rearrangement using the clustering
+    based on furthest neighbor strategy (also known as complete
+    linkage) creates a heatmap with a nicely defined center. The
+    kernel is formed by a group of ancient file system and a few
+    memory-based file systems. In the lower left we can also notice a
+    close-knit group formed by
+    <em>ext2</em>/<em>ext3</em>/<em>ext4</em>, <em>ocfs2</em>
+    and <em>reiserfs</em>. As before, a few classic
+    modules, <em>jbd</em>/<em>jbd2</em>
+    and <em>coda</em>/<em>smbfs</em>/<em>ncpfs</em>, are again
+    together.
+
+  </div>
+  <img src="summary.tux3.heatmap.hamm.complete.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="dendrogram-complete" id="dendrogram-complete"><span class="sans"><b>Dendrogram of the clustering using the Hamming distance and complete linkage.</b></span></a>
+
+    Here we can see that the big nice split from Ward's method is
+    replaced by a more scatter division. The complex disk-based
+    file systems are now split in two parts,
+    <em>ocfs2</em>&ndash;<em>ext3</em>
+    and <em>xfs</em>&ndash;<em>ubifs</em>, the second of them being
+    muddle by two flash-based file systems (<em>jffs2</em>
+    and <em>ubifs</em>). <em>btrfs</em> is again next to <em>gfs2</em>
+    and close to <em>xfs</em> but, surprise, also next
+    to <em>ntfs</em>. Like before, <em>tux3</em> is close to a bunch
+    of ancient file systems. <em>isofs</em>, <em>squashfs</em>
+    and <em>cramfs</em>, two read-only file systems are together from
+    the start this time with <em>romfs</em>, the only other read-only
+    file system, keeping a decent distance from them.
+
+  </div>
+  <img src="summary.tux3.hclust.hamm.complete.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="heatmap-average" id="heatmap-average"><span class="sans"><b>Clustering using the Hamming distance and group average.</b></span></a>
+
+    The group average method, usually used to identify bell-shaped
+    clusters, generates a heatmap with a prominent off-center
+    kernel. As in the previous case, this is made up of mostly by
+    ancient file systems. Easily noticeable groups are again formed by
+    the <em>ext2</em>/<em>ext3</em>/<em>ext4</em>, <em>jbd</em>/<em>jbd2</em>
+    and <em>coda</em>/<em>smbfs</em>/<em>ncpfs</em>.
+
+  </div>
+  <img src="summary.tux3.heatmap.hamm.average.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="dendrogram-average" id="dendrogram-average"><span class="sans"><b>Dendrogram of the clustering using the Hamming distance and group average.</b></span></a>
+
+    In this representation, the skew is also very visible.  From a
+    high-level perspective, we have a big
+    cluster <em>jbd</em>&ndash;<em>ubifs</em> and a few small ones
+    (<em>ext4</em>&ndash;<em>ext3</em>, <em>gfs2</em>&ndash;<em>reiserfs</em>
+    and <em>cifs</em>&ndash;<em>kafs</em>) which are merged in the
+    final merging steps with some file systems
+    (<em>nfs</em>, <em>btrfs</em>, <em>dlm</em>, etc). The intuition
+    behind this is that, as the file systems use more and more
+    external symbols, they become more loosely connected.
+
+  </div>
+  <img src="summary.tux3.hclust.hamm.average.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="heatmap-mcquitty" id="heatmap-mcquitty"><span class="sans"><b>Clustering using the Hamming distance and McQuitty's method.</b></span></a>
+
+    The heatmap in this case is somehow similar with the one from
+    complete linkage.
+
+  </div>
+  <img src="summary.tux3.heatmap.hamm.mcquitty.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="dendrogram-mcquitty" id="dendrogram-mcquitty"><span class="sans"><b>Dendrogram of the clustering using the Hamming distance and McQuitty's method.</b></span></a>
+
+    If we ignore the skew induced
+    by <em>proc</em>/<em>nfsd</em>/<em>nfs</em> and the fact that the
+    complex disk-based file systems
+    (<em>xfs</em>&ndash;<em>reiserfs</em>
+    and <em>ocfs2</em>&ndash;<em>ext3</em>) are not sharing the same
+    level, then the resulting tree is nicely split in similar things.
+
+  </div>
+  <img src="summary.tux3.hclust.hamm.mcquitty.png" />
+</div>
+
+<hr style="margin-bottom: 3em;" class="sep" />
+
+<p>Following are a set of dendrograms using Canberra distance. In our
+  case, this metric is equivalent with the number of different
+  external symbols between two modules. After each dendrogram a
+  reordered map of symbols is also plotted.</p>
+
+<hr style="margin-top: 3em;" class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-ward" id="canberra-ward"><span class="sans"><b>Clustering using the Canberra distance and Ward's method.</b></span></a>
+  </div>
+  <img src="summary.tux3.hclust.canberra.ward.png" />
+  <img src="summary.tux3.tick.canberra.ward.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-complete" id="canberra-complete"><span class="sans"><b>Clustering using the Canberra distance and complete linkage.</b></span></a>
+  </div>
+  <img src="summary.tux3.hclust.canberra.complete.png" />
+  <img src="summary.tux3.tick.canberra.complete.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-average" id="caberra-average"><span class="sans"><b>Clustering using the Canberra distance and group average.</b></span></a>
+  </div>
+  <img src="summary.tux3.hclust.canberra.average.png" />
+  <img src="summary.tux3.tick.canberra.average.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-mcquitty" id="caberra-mcquitty"><span class="sans"><b>Clustering using Canberra distance and McQuitty's method.</b></span></a>
+  </div>
+  <img src="summary.tux3.hclust.canberra.mcquitty.png" />
+  <img src="summary.tux3.tick.canberra.mcquitty.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-single" id="caberra-single"><span class="sans"><b>Clustering using Canberra distance and single linkage.</b></span></a>
+  </div>
+  <img src="summary.tux3.hclust.canberra.single.png" />
+  <img src="summary.tux3.tick.canberra.single.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="pars" id="pars"><span class="sans"><b>Phylogentic tree.</b></span></a>
+
+    Pars is a program that can construct an evolutionary tree which
+    requires a minimum number of changes (maximum parsimony). The
+    program is part of PHYLIP, a computational phylogenetics
+    package created and maintained by Joseph Felsenstein.
+
+    <br /><br />
+
+    The input to Pars is number of species, each described using a
+    string of characters. Usually each character is either "0" or "1"
+    indicating the presence of absences of a certain feature but Pars
+    also capable of dealing with up to 8 states plus "?" which
+    indicates an unknown state. In our case we only need "0" and "1"
+    and each position in the string encodes a certain external call.
+
+    <br /><br />
+
+    The result is the following tree. This looks like a dendrogram but
+    it is slightly different. This time the length of any vertical
+    line is proportional with the number of changes between two
+    states. We can see for example that <em>msdos</em>
+    and <em>vfat</em> are both very close to the their parent
+    while <em>ext4</em> and <em>ext3</em> are much farther apart.
+
+  </div>
+  <img src="phylip/pars.one.dendrogram.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="pars-circos" id="pars-circos"><span class="sans"><b>Circular representations of the phylogentic tree.</b></span></a>
+
+    This is an alternative representation of the tree generated by
+    Pars. The size of the text is proportional with the depth.
+
+  </div>
+  <img src="phylip/pars.one.circos.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="pars-circos-180" id="pars-circos-180"><span class="sans"><b>180&deg; circular representation of the phylogentic tree.</b></span></a>
+
+    An alternative representation using only half of a circle.
+
+  </div>
+  <img src="phylip/pars.one.circos-180.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="pars-circos-90" id="pars-circos-90"><span class="sans"><b>90&deg; circular representation of the phylogentic tree.</b></span></a>
+
+    An yet another representation using a quarter of a circle.
+
+  </div>
+  <img src="phylip/pars.one.circos-90.png" />
+</div>
+
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="circos" id="circos"><span class="sans"><b>Circos.</b></span></a>
+
+    Circos is a visualization tool by Martin Krzywinski. The initial
+    purpose was to provide a better representation of various genomic
+    data but the program was successfully used to produce very nice
+    graphical representations of other type of data. 
+
+    <br /><br />
+
+    Let's now look at our plot. On the outer edge we have the file
+    systems split in categories (from top to bottom: disk-based,
+    optical mediums, flash-based, network-based, cluster-based,
+    memory-based, ancient). The size is proportional with the number
+    of external symbols. Colors indicate the type of external
+    symbols. The green represents functions, red is data, orange are
+    read-only data, and light yellow is uninitialized data (BSS). To
+    give a sense of proportions, the external symbols exported by the
+    Linux Kernel, <em>vmlinux</em>, are also depicted. It was compiled
+    in the same configuration as the rest of the file systems. To give
+    some numbers: it exports a total of 9310 external symbols out of
+    which 8047 are functions, 621 are writable variables, 159 are
+    read-only and 483 are BSS data. The gray area from file systems
+    indicates the external symbols which are not satisfied by the
+    kernel but by some other kernel module. This is noticeable
+    for <em>nfs</em>, <em>nfsd</em> and also the users
+    of <em>jbd</em>/<em>jbd2</em>: <em>ext3</em>, <em>ext4</em>, <em>ocfs2</em>.
+
+    <br /><br />
+
+    On the inner edge of <em>vmlinux</em> there is a plot that
+    indicates the frequency which which each exported symbol is used
+    by the file systems from right. One thing we noticed here is that
+    variables are used pretty much with the same frequency as the
+    functions.
+
+    <br /><br />
+
+    The set of boxes from the inner edge of the file systems
+    represents the percentage of the external symbols which are unique
+    to each file system. We can see that virtually all the external
+    symbols used by <em>proc</em> are only used by it. But having
+    unique external symbols is not a rare feature: with the exception
+    of ancient file systems all the other categories have members with
+    various degree of "uniqueness".
+
+    <br /><br />
+
+    The red arcs from inside depict the use-provide relationships
+    between the file systems. As expected, the memory-based modules
+    are the ones that are the main providers with <em>proc</em>
+    and <em>debufgs</em> being the most popular one. We can also see
+    that <em>lockd</em> is used by <em>nfs</em> and <em>nfsd</em> and
+    also the relation between <em>fat</em>
+    and <em>vfat</em>/<em>msdos</em>. A notable thing: there is no
+    link between <em>dlm</em> and <em>ocfs2</em>/<em>gfs2</em> because
+    only the main kernel module was considered.
+
+  </div>
+  <img src="circos2/summary.tux3.circos.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="treemap" id="treemap"><span class="sans"><b>Treemap.</b></span></a>
+
+    A treemap is a visual representation of hierarchies using nested
+    rectangles. The first version was introduced by Ben Shneiderman in
+    1990 in the context of visualization of directories structures. In
+    our representation the size of the rectangle for each file systems
+    is proportional with the number of external symbols used by
+    it. The symbols exported by <em>vmlinux</em> are also
+    depicted. The thicker lines indicate the boundaries of the seven
+    categories we introduced earlier.
+  </div>
+  <img src="treemap/treemap-lt.png" />
+</div>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-319751-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<script src="http://razvan.musaloiu.com/software/utracker/utracker.js" type="text/javascript"></script>
+</body>
+</html>

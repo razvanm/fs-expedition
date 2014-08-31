@@ -1,0 +1,50 @@
+#!/bin/bash
+
+ROOT=`pwd`
+v=$1
+dest=linux-2.6.$v.obj
+
+#rm -rf linux-2.6.$v
+#rm -rf $dest
+
+if [[ ! -d linux-2.6.$v ]]
+then
+    echo Unpack linux-2.6.$v.tar.bz2
+    time tar xjf linux-2.6.$v.tar.bz2
+fi
+
+if [[ ! -d $dest ]]
+then
+    mkdir $dest
+fi
+
+cd linux-2.6.$v
+echo ">>>>>>>>>> Cleaning..."
+make mrproper
+echo ">>>>>>>>>> Configuring..."
+make allmodconfig
+echo ">>>>>>>>>> Preparing..."
+make prepare CC=gcc-3.4
+cat $ROOT/config | while read line
+do
+    f=`echo $line | cut -d ' ' -f 1`
+    d=`echo $line | cut -d ' ' -f 2`
+    if [[ ! -f ../$dest/$f ]]
+    then
+	if [[ -d fs/$d ]]
+	then
+	    echo ">>>>>>>>>> Building $f..."
+ 	    pushd .
+ 	    cd fs/$d
+ 	    make -C ../../ SUBDIRS=`pwd` CC=gcc-3.4
+ 	    cd ../..
+	    cp -a fs/$d/$f ../$dest
+	    popd
+	else
+	    echo ">>>>>>>>>> Skip $f (missing directory)"
+	fi
+    else
+	echo ">>>>>>>>>> Skip $f (already exists)"
+    fi
+done
+cd ..

@@ -1,0 +1,7 @@
+for f in *.svg
+do
+    echo $f
+    sed -i -e 's/text-anchor: start"/text-anchor: start; font-family: Helvetica LT Condensed"/' \
+	-i -e 's/text-anchor: end"/text-anchor: end; font-family: Helvetica LT Condensed"/' \
+	$f
+done

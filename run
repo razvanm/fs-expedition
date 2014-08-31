@@ -1,0 +1,22 @@
+#!/bin/bash
+
+for i in `seq 29 -1 13`
+do
+    ./runone 2.6.$i 2>&1 | tee log-2.6.$i
+done
+
+
+# for i in `seq 12 -1 9`
+# do
+#     ./runone12 $i 2>&1 | tee log$i
+# done
+
+# for i in `seq 8 -1 4`
+# do
+#     ./runone8 $i 2>&1 | tee log$i
+# done
+
+for i in `seq 12 -1 0`
+do
+    ./runone3 $i 2>&1 | tee log-2.6.$i
+done

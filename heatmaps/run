@@ -1,0 +1,26 @@
+one() {
+    for i in `seq 0 29`
+    do
+	echo 2.6.$i
+	../summaryone.py ../linux-2.6.$i.obj | ./heatmap-hamm-fixed.py "$2" > heatmap-2.6.$i
+    done
+    
+    R --no-save < heatmaps.R
+    
+    convert -delay 20 heatmap.hamm.2.6.?.png heatmap.hamm.2.6.??.png -delay 500 heatmap.hamm.2.6.29.png heatmap.hamm.gif
+    [ -d $2 ] || mkdir $1
+    mv *.png $1
+    mv *.gif $1
+}
+
+#one 'nfs ext4 ocfs2 xfs proc ext3 btrfs nfsd reiserfs gfs2 jfs kafs cifs ext2 fuse ubifs ntfs ecryptfs dlm jffs2 ncpfs udf smbfs lockd hfsplus fat ufs hfs jbd2 affs coda minix hpfs hugetlbfs sysv configfs jbd isofs 9p squashfs omfs bfs adfs qnx4 vfat devpts befs debugfs freevxfs ramfs efs cramfs romfs msdos' size
+
+# one 'msdos romfs cramfs efs ramfs freevxfs debugfs befs devpts vfat qnx4 adfs bfs omfs squashfs 9p isofs jbd configfs sysv hugetlbfs hpfs minix coda affs jbd2 hfs ufs fat hfsplus lockd smbfs udf ncpfs jffs2 dlm ecryptfs ntfs ubifs fuse ext2 cifs kafs jfs gfs2 reiserfs nfsd btrfs ext3 proc xfs ocfs2 ext4 nfs' size
+
+one ward 'ext4 ext2 ext3 ocfs2 xfs btrfs gfs2 jfs reiserfs fat hfs hfsplus hpfs affs omfs adfs qnx4 bfs udf ufs sysv minix 9p hugetlbfs configfs ramfs debugfs devpts msdos vfat cramfs befs romfs efs freevxfs squashfs isofs nfs proc cifs kafs ntfs jffs2 ubifs coda smbfs ncpfs ecryptfs fuse nfsd jbd jbd2 lockd dlm'
+
+one complete 'ocfs2 ext4 reiserfs ext2 ext3 nfs cifs kafs lockd dlm jbd jbd2 coda smbfs ncpfs 9p ramfs debugfs devpts msdos vfat adfs qnx4 bfs befs romfs efs freevxfs configfs hugetlbfs fat hfs hfsplus isofs cramfs squashfs udf ufs sysv minix omfs hpfs affs ecryptfs fuse xfs gfs2 btrfs ntfs jfs jffs2 ubifs nfsd proc'
+
+one average 'nfs proc nfsd ocfs2 xfs ext4 ext2 ext3 btrfs gfs2 jfs reiserfs cifs kafs dlm fuse ecryptfs lockd ntfs jbd jbd2 coda smbfs ncpfs fat 9p msdos vfat ramfs debugfs devpts udf hfs hfsplus cramfs befs romfs efs freevxfs omfs adfs qnx4 bfs squashfs isofs hpfs affs ufs sysv minix configfs hugetlbfs jffs2 ubifs'
+
+one mcquitty 'proc nfsd nfs cifs kafs lockd dlm ntfs jbd jbd2 fat hfs hfsplus udf ufs sysv minix hpfs affs omfs adfs qnx4 bfs befs romfs efs freevxfs coda smbfs ncpfs 9p isofs cramfs squashfs msdos vfat ramfs debugfs devpts configfs hugetlbfs jffs2 ubifs ecryptfs fuse xfs btrfs gfs2 jfs reiserfs ocfs2 ext4 ext2 ext3'

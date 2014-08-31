@@ -1,0 +1,378 @@
+<html>
+<head>
+  <title>A Visual Expedition Inside the Linux File Systems - Linux Kernel 2.6.x</title>
+  <meta name="author" content="Razvan Musaloiu-E." />
+  <meta name="keywords" content="file systems visual expedition filesystems" />
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body><div id="everything">
+
+<h1>Linux Kernel 2.6.x</h1>
+
+<p>In this section we are going to look at the relations between 1377
+  file systems compiled from Linux Kernel 2.6.0&ndash;2.6.29. More
+  details about how I compiled them can be found
+  in <a href="building.html"><span class="sans"><b>Appendix
+  A</b></span></a>. Note that this time the final 2.6.29 version is
+  used. This means that <em>tux3</em> is missing.
+</p>
+
+<p>Like the previous one, this section is also a sequence of commented
+  figures.
+</p>
+
+<hr style="margin-top: 3em;" class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="extsyms1" id="extsyms1"><span class="sans"><b>Number of external symbols over time (part 1).</b></span></a>
+
+    In order to avoid clutter, this graph is split in 6 parts. The
+    split was done based on how many external symbols file systems
+    gain over the whole span of their life. The first plot contains a
+    big group of 35 file systems that shows only very little
+    changes. Beside <em>btrfs</em> and <em>ubifs</em>, which stands
+    out due to their big number of external symbols, the other 33 are
+    the following: <em>adfs, affs, befs, bfs, coda, configfs, cramfs,
+    debugfs, devfs, efs, freevxfs, hfs, hfsplus, hpfs, hugetlbfs,
+    intermezzo, isofs, jbd, jffs, lockd, minix, msdos, ncpfs, omfs,
+    qnx4, ramfs, romfs, smbfs, squashfs, sysv, udf, ufs, vfat</em>.
+
+  </div>
+  <img src="extsyms/extsyms-1.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="extsyms2" id="extsyms2"><span class="sans"><b>Number of external symbols over time (part 2).</b></span></a>
+
+    Only two notable things here: the race between <em>ntfs</em>
+    and <em>jffs2</em> which start with a microscopic distance of only 2
+    symbols in 2.6.0, go apart to a distance of 43 symbols in 2.6.17
+    and end up with a distance of 24 in 2.6.29, and the sudden sink
+    of <em>devpts</em> in 2.6.4 which is followed by a a similar
+    increase in 2.6.13.
+
+  </div>
+  <img src="extsyms/extsyms-2.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="" id=""><span class="sans"><b>Number of external symbols over time (part 3).</b></span></a>
+
+    Another close race is going on now between <em>nfsd</em>
+    and <em>ext2</em>. They also start at a distance of 2 symbols and
+    the distance keep growing ending up at 55 symbols in 2.6.29.
+
+  </div>
+  <img src="extsyms/extsyms-3.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="extsyms4" id="extsyms4"><span class="sans"><b>Number of external symbols over time (part 4).</b></span></a>
+
+    Yet another interesting race is featuring this time <em>proc</em>
+    and <em>reiserfs</em>. <em>proc</em> starts with an advantage of 9
+    symbols but <em>reiserfs</em> is taking the lead in 2.6.7 and
+    surrenders in 2.6.24. By 2.6.29 the distance gets to 25 symbols.
+
+  </div>
+  <img src="extsyms/extsyms-4.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="extsyms5" id="extsyms5"><span class="sans"><b>Number of external symbols over time (part 5).</b></span></a>
+
+    The only remarkable thing is the impressive jump of 62
+    symbols <em>kafs</em>, the Andrew File System, is making in
+    2.6.22. As we'll see a little later, this will earn him the second
+    place in the top of biggest jumps.
+
+  </div>
+  <img src="extsyms/extsyms-5.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="extsyms6" id="extsyms6"><span class="sans"><b>Number of external symbols over time (part 6).</b></span></a>
+
+    In here we have <em>9p</em> the absolute winner of the biggest
+    increase (74 symbols in 2.6.27) and also the biggest decrease (25
+    symbols in 2.6.23). The 54 symbols gained by <em>osfs2</em> in
+    2.6.29 put him in the third place in the biggest increase
+    contest. Another winner is <em>nfs</em> which holds the absolute
+    record for the biggest difference between the minimum and maximum
+    number of external symbols.
+
+  </div>
+  <img src="extsyms/extsyms-6.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="extsyms" id="extsyms"><span class="sans"><b>Boxplots of the external symbols for each release.</b></span></a>
+
+    In order to avoid cluttering, in this plot the lines that are shown
+    in the previous ones are omitted. The boxes indicate the interval
+    which contains 50% of the file systems for that particular
+    release. The thick horizontal line inside the box indicates the
+    median. We can see that the median goes up and so does the spread
+    of the two middle quartiles and the extremities.
+
+  </div>
+  <img src="extsyms/extsyms.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="longevity" id="longevity"><span class="sans"><b>Ranking based on longevity.</b></span></a>
+
+    This is the first out of seven rankings and it shows in how many
+    releases each of the 65 file systems shows up. What is easily
+    noticeable is that most of the file systems, 38 of them, are
+    veterans and are present in all the 2.6.x releases. Note that
+    there are only four disk-based systems that are no
+    veterans: a very young one, <em>btrfs</em> which shows up only in one
+    release; a junior one, <em>ext4</em> which accumulated so far 11 releases and
+    two old seniors, <em>hfsplus</em> and <em>jfs</em> which missed
+    the big group of veterans by only four and one releases, respectively.
+
+  </div>
+  <img src="extsyms/extsyms-longevity.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="minmax" id="minmax"><span class="sans"><b>Ranking based on the minimum and maximum number of symbols.</b></span></a>
+
+    The following two graphs shows the file systems sorted by the
+    minimum and maximum number of symbols they had over their life in
+    2.6.x. The unbelievable number of external symbols of only one was
+    achieved by <em>devpts</em> in three consecutive releases (from
+    2.6.10 to 2.6.12). Also hard to believe is the number of 4
+    external symbols scored by <em>9p</em> in 2.6.14 and 2.6.15. I
+    haven't actually tested these modules so they might be broken and/or
+    incomplete.
+
+  </div>
+  <img src="extsyms/extsyms-min.png" />
+  <img src="extsyms/extsyms-max.png" />
+
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="range" id="range"><span class="sans"><b>Ranking based on the range of the number of symbols.</b></span></a>
+
+    This plot shows the ranking based on range, the difference between
+    the maximum and minimum number of symbols a file system had
+    reached in its lifetime. As we pointed before, the absolute winner
+    is <em>nfs</em>. Two of the file system at the other
+    end, <em>btrfs</em> and <em>squashfs</em> might not hold their
+    position for long considering that both only have one one presence
+    in 2.6.x.
+
+  </div>
+  <img src="extsyms/extsyms-range.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="last-first" id="last-first"><span class="sans"><b>Ranking based on the difference in number of symbols between first and last appearance.</b></span></a>
+
+    This plot is very similar with the previous one. One interesting
+    thing is that <em>freevxfs</em>, a veteran which didn't skip any
+    2.6 release, ends up in 2.6.29 with two less symbols than in
+    2.6.0.
+
+  </div>
+  <img src="extsyms/extsyms-last-first.png" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="minmaxjump" id="minmaxjump"><span class="sans"><b>Rankings based on the biggest increase and decrease.</b></span></a>
+
+    Beside the first places which were already mentioned what can be
+    said about this is that, despite the fact that most of the file
+    systems don't have big increases of the number of external symbols
+    from one release to another, they decrease much less than they
+    increase. The behavior of <em>ubifs</em>, which never decreases,
+    can be excused by the fact that he has only 3 presences in the 2.6.x.
+
+  </div>
+  <img src="extsyms/extsyms-max-jump.png" />
+  <img src="extsyms/extsyms-min-jump.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="rankings" id="rankings"><span class="sans"><b>Relations between the rankings.</b></span></a>
+
+    This plot summarizes the previous seven ones. The gray lines are
+    used when the rank changed more than 10 positions.
+
+  </div>
+  <img src="extsyms/extsyms-rankings.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="heatmap-ward" id="heatmap-ward"><span class="sans"><b>Heatmap of the clustering using Hamming distance and Ward's method.</b></span></a>
+
+    This is the first out of four animations that shows how the
+    heatmap of the Hamming distance evolves over time. To aid the
+    comparison, the file systems shown are only the one that are still
+    present in 2.6.29. Their position is keep fixed and is determined
+    by the clustering done on the distances from 2.6.29. The Hamming
+    distance is computed separately for each release. Red indicates
+    high similarity and yellow indicates the opposite. One notable
+    thing in all the four animations is that similarity is decreasing
+    over time.
+
+  </div>
+  <img src="heatmaps/ward/heatmap.hamm.gif" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="heatmap-complete" id="heatmap-complete"><span class="sans"><b>Heatmap of the clustering using Hamming distance and complete linkage.</b></span></a>
+  </div>
+  <img src="heatmaps/complete/heatmap.hamm.gif" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="heatmap-average" id="heatmap-average"><span class="sans"><b>Heatmap of the clustering using Hamming distance and group average.</b></span></a>
+  </div>
+  <img src="heatmaps/average/heatmap.hamm.gif" />
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="heatmap-mcquitty" id="heatmap-mcquitty"><span class="sans"><b>Heatmap of the clustering using Hamming distance and McQuitty's method.</b></span></a>
+  </div>
+  <img src="heatmaps/mcquitty/heatmap.hamm.gif" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="hamming-ward" id="hamming-ward"><span class="sans"><b>Circular dendrogram of the clustering using Hamming distance and Ward's method.</b></span></a>
+
+    This is the first out of four circular dendrograms that shows the
+    result of clustering using the Hamming distance over all the file
+    systems. The ticks that make up the inner ring encode file systems
+    while the outside ones encode the version number. A high
+    resolution image with text annotation is available upon click.
+    
+  </div>
+  <a href="heatmaps/circos.hamming.ward.huge.png"><img src="heatmaps/circos.hamming.ward.png" /></a>
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="hamming-complete" id="hamming-complete"><span class="sans"><b>Circular dendrogram of the clustering using Hamming distance and complete linkage.</b></span></a>
+  </div>
+  <a href="heatmaps/circos.hamming.complete.huge.png"><img src="heatmaps/circos.hamming.complete.png" /></a>
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="hamming-average" id="hamming-average"><span class="sans"><b>Circular dendrogram of the clustering using Hamming distance and group average.</b></span></a>
+  </div>
+  <a href="heatmaps/circos.hamming.average.huge.png"><img src="heatmaps/circos.hamming.average.png" /></a>
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="hamming-mcquitty" id="hamming-mcquitty"><span class="sans"><b>Circular dendrogram of the clustering using Hamming distance and McQuitty's method.</b></span></a>
+  </div>
+  <a href="heatmaps/circos.hamming.mcquitty.huge.png"><img src="heatmaps/circos.hamming.mcquitty.png" /></a>
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-ward" id="canberra-ward"><span class="sans"><b>Circular dendrogram of the clustering using Canberra distance and Ward's method.</b></span></a>
+
+    This is the first out of five circular dendrograms that shows the
+    result of clustering using the Canberra distance over all the file
+    systems. As we mentioned before, in our case, this metric is
+    equivalent with the number of different external symbols.
+
+  </div>
+  <a href="heatmaps/circos.canberra.ward.huge.png"><img src="heatmaps/circos.canberra.ward.png" /></a>
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-complete" id="canberra-complete"><span class="sans"><b>Circular dendrogram of the clustering using Canberra distance and complete linkage.</b></span></a>
+  </div>
+  <a href="heatmaps/circos.canberra.complete.huge.png"><img src="heatmaps/circos.canberra.complete.png" /></a>
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-average" id="canberra-average"><span class="sans"><b>Circular dendrogram of the clustering using Canberra distance and group average.</b></span></a>
+  </div>
+  <a href="heatmaps/circos.canberra.average.huge.png"><img src="heatmaps/circos.canberra.average.png" /></a>
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-mcquitty" id="canberra-mcquitty"><span class="sans"><b>Circular dendrogram of the clustering using Canberra distance and McQuitty's method.</b></span></a>
+  </div>
+  <a href="heatmaps/circos.canberra.mcquitty.huge.png"><img src="heatmaps/circos.canberra.mcquitty.png" /></a>
+</div>
+
+<div class="figure">
+  <div class="caption">
+    <a name="canberra-single" id="canberra-single"><span class="sans"><b>Circular dendrogram of the clustering using Canberra distance and single linkage.</b></span></a>
+  </div>
+  <a href="heatmaps/circos.canberra.single.huge.png"><img src="heatmaps/circos.canberra.single.png" /></a>
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="pars" id="pars"><span class="sans"><b>Circular representation of the phylogenetic tree.</b></span></a>
+
+    This last plot shows the phylgenetic tree constructed by Pars.
+
+  </div>
+  <a href="phylip/pars.all.circos.huge.png"><img src="phylip/pars.all.circos.png" /></a>
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-319751-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<script src="http://razvan.musaloiu.com/software/utracker/utracker.js" type="text/javascript"></script>
+</body>
+</html>

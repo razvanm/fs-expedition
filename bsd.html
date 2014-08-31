@@ -1,0 +1,128 @@
+<html>
+<head>
+  <title>A Visual Expedition Inside the Linux File Systems - BSD Family</title>
+  <meta name="author" content="Razvan Musaloiu-E." />
+  <meta name="keywords" content="file systems visual expedition filesystems" />
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body><div id="everything">
+
+<h1>The BSD Family</h1>
+
+<p>In this section we are going to take a quick look at the BSD
+  world. The operating systems considered are FreeBSD, NetBSD, OpenBSD
+  and Darwin. All the systems have support for kernel modules but
+  their use in NetBSD and OpenBSD is limited.
+
+  The "over time" term is used here to refer to releases. Timelines
+  for all the systems except Darwin are presented
+  in <a href="building.html"><span class="sans"><b>Appendix
+  B</b></span></a>.
+</p>
+
+<hr style="margin-top: 3em;" class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="freebsd-map" id="freebsd-map"><span class="sans"><b>Map of the external symbols for FreeBSD 7.2.</b></span></a>
+
+    As before, each tick represents an external symbol. The horizontal
+    axis contains 832 symbols. The 26 <tt>.ko</tt> modules related to
+    file systems were taken from the <tt>boot/kernel</tt> directory of
+    the bootonly install CD. The FFS, the native filesystem for
+    FreeBSD, is not compiled as module so it doesn't show up here.
+
+  </div>
+  <img src="bsd/freebsd/summary.7.2.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="" id=""><span class="sans"><b>Number of external symbols over time for FreeBSD.</b></span></a>
+
+    To avoid overlapping this plot is split in five parts. A few
+    things are noticeable: first, for most of the modules the number
+    of external symbols dropped from 5.5 to 6.0 and second, with one
+    exception (<em>unionfs</em>) all the other file systems didn't
+    change much.
+  </div>
+  <img src="bsd/freebsd/extsyms-1.png" />
+  <img src="bsd/freebsd/extsyms-2.png" />
+  <img src="bsd/freebsd/extsyms-3.png" />
+  <img src="bsd/freebsd/extsyms-4.png" />
+  <img src="bsd/freebsd/extsyms-5.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="kernel-freebsd" id="kernel-freebsd"><span class="sans"><b>Exported symbols over time for FreeBSD.</b></span></a>
+
+    Because the compiled kernel is readily available, an easy thing
+    to do is to look how the number of exported symbols changed over
+    time. Note that this plot starts with FreeBSD 4.5, the first
+    release for which symbols were not stripped from the kernel.
+  </div>
+  <img src="bsd/freebsd/expsyms.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="" id=""><span class="sans"><b>Exported symbols over time for NetBSD.</b></span></a>
+
+    Unlike FreeBSD, in NetBSD there are significant, usually increase,
+    in the number of symbols from one major release to another. The
+    plot starts from 1.5 because that was the first one being compiled
+    as ELF.
+  </div>
+  <img src="bsd/netbsd/expsyms.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="" id=""><span class="sans"><b>Exported symbols over time for OpenBSD.</b></span></a>
+
+    As in the case of NetBSD, the graph is shorted at the left because
+    all the older ones are a.out.
+  </div>
+  <img src="bsd/openbsd/expsyms.png" />
+</div>
+
+<hr class="sep" />
+
+<div class="figure">
+  <div class="caption">
+    <a name="" id=""><span class="sans"><b>Map of the external symbols for Darwin 9.7.0.</b></span></a>
+
+    This is the kernel for MacOS X 10.5.7. Each tick represents an
+    external symbols. There are 489 symbols on the horizontal axis.
+
+  </div>
+  <img src="bsd/darwin/summary.9.7.0.png" />
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-319751-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<script src="http://razvan.musaloiu.com/software/utracker/utracker.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+chr - msdos msdos 0 34
+chr - romfs romfs 0 34
+chr - cramfs cramfs 0 39
+chr - efs efs 0 39
+chr - ramfs ramfs 0 40
+chr - freevxfs freevxfs 0 41
+chr - befs befs 0 48
+chr - debugfs debugfs 0 48
+chr - vfat vfat 0 48
+chr - devpts devpts 0 49
+chr - qnx4 qnx4 0 49
+chr - adfs adfs 0 56
+chr - bfs bfs 0 56
+chr - omfs omfs 0 65
+chr - squashfs squashfs 0 65
+chr - 9p 9p 0 77
+chr - isofs isofs 0 77
+chr - jbd jbd 0 81
+chr - configfs configfs 0 82
+chr - sysv sysv 0 85
+chr - hpfs hpfs 0 88
+chr - hugetlbfs hugetlbfs 0 88
+chr - minix minix 0 88
+chr - coda coda 0 90
+chr - affs affs 0 91
+chr - jbd2 jbd2 0 97
+chr - tux3 tux3 0 101
+chr - hfs hfs 0 102
+chr - ufs ufs 0 102
+chr - fat fat 0 107
+chr - hfsplus hfsplus 0 108
+chr - lockd lockd 0 109
+chr - smbfs smbfs 0 114
+chr - udf udf 0 114
+chr - ncpfs ncpfs 0 118
+chr - jffs2 jffs2 0 136
+chr - dlm dlm 0 139
+chr - ecryptfs ecryptfs 0 155
+chr - ntfs ntfs 0 159
+chr - ubifs ubifs 0 159
+chr - fuse fuse 0 164
+chr - ext2 ext2 0 184
+chr - cifs cifs 0 194
+chr - kafs kafs 0 196
+chr - jfs jfs 0 208
+chr - gfs2 gfs2 0 235
+chr - reiserfs reiserfs 0 235
+chr - nfsd nfsd 0 237
+chr - btrfs btrfs 0 251
+chr - ext3 ext3 0 260
+chr - proc proc 0 262
+chr - xfs xfs 0 277
+chr - ocfs2 ocfs2 0 283
+chr - ext4 ext4 0 322
+chr - nfs nfs 0 329
+chr - vmlinux vmlinux 0 9310
+band msdos msdos.T msdos.T 0 17 green
+band msdos msdos.U msdos.U 17 34 lgrey
+band romfs romfs.R romfs.R 0 2 orange
+band romfs romfs.T romfs.T 2 34 green
+band cramfs cramfs.D cramfs.D 0 1 red
+band cramfs cramfs.R cramfs.R 1 3 orange
+band cramfs cramfs.T cramfs.T 3 34 green
+band cramfs cramfs.U cramfs.U 34 39 lgrey
+band efs efs.D efs.D 0 1 red
+band efs efs.R efs.R 1 3 orange
+band efs efs.T efs.T 3 39 green
+band ramfs ramfs.D ramfs.D 0 1 red
+band ramfs ramfs.R ramfs.R 1 3 orange
+band ramfs ramfs.T ramfs.T 3 40 green
+band freevxfs freevxfs.D freevxfs.D 0 1 red
+band freevxfs freevxfs.R freevxfs.R 1 3 orange
+band freevxfs freevxfs.T freevxfs.T 3 41 green
+band befs befs.D befs.D 0 1 red
+band befs befs.R befs.R 1 2 orange
+band befs befs.T befs.T 2 43 green
+band befs befs.U befs.U 43 48 lgrey
+band debugfs debugfs.D debugfs.D 0 1 red
+band debugfs debugfs.R debugfs.R 1 3 orange
+band debugfs debugfs.B debugfs.B 3 6 lyellow
+band debugfs debugfs.T debugfs.T 6 48 green
+band vfat vfat.D vfat.D 0 4 red
+band vfat vfat.T vfat.T 4 30 green
+band vfat vfat.U vfat.U 30 48 lgrey
+band devpts devpts.D devpts.D 0 3 red
+band devpts devpts.R devpts.R 3 5 orange
+band devpts devpts.T devpts.T 5 49 green
+band qnx4 qnx4.D qnx4.D 0 1 red
+band qnx4 qnx4.R qnx4.R 1 2 orange
+band qnx4 qnx4.T qnx4.T 2 49 green
+band adfs adfs.D adfs.D 0 1 red
+band adfs adfs.T adfs.T 1 56 green
+band bfs bfs.D bfs.D 0 1 red
+band bfs bfs.T bfs.T 1 56 green
+band omfs omfs.D omfs.D 0 2 red
+band omfs omfs.T omfs.T 2 64 green
+band omfs omfs.U omfs.U 64 65 lgrey
+band squashfs squashfs.D squashfs.D 0 2 red
+band squashfs squashfs.R squashfs.R 2 4 orange
+band squashfs squashfs.B squashfs.B 4 6 lyellow
+band squashfs squashfs.T squashfs.T 6 61 green
+band squashfs squashfs.U squashfs.U 61 65 lgrey
+band 9p 9p.D 9p.D 0 3 red
+band 9p 9p.T 9p.T 3 61 green
+band 9p 9p.U 9p.U 61 77 lgrey
+band isofs isofs.D isofs.D 0 3 red
+band isofs isofs.R isofs.R 3 5 orange
+band isofs isofs.T isofs.T 5 69 green
+band isofs isofs.U isofs.U 69 77 lgrey
+band jbd jbd.D jbd.D 0 4 red
+band jbd jbd.B jbd.B 4 5 lyellow
+band jbd jbd.T jbd.T 5 81 green
+band configfs configfs.D configfs.D 0 4 red
+band configfs configfs.B configfs.B 4 7 lyellow
+band configfs configfs.T configfs.T 7 82 green
+band sysv sysv.D sysv.D 0 3 red
+band sysv sysv.T sysv.T 3 85 green
+band hpfs hpfs.D hpfs.D 0 3 red
+band hpfs hpfs.R hpfs.R 3 4 orange
+band hpfs hpfs.B hpfs.B 4 5 lyellow
+band hpfs hpfs.T hpfs.T 5 88 green
+band hugetlbfs hugetlbfs.D hugetlbfs.D 0 6 red
+band hugetlbfs hugetlbfs.R hugetlbfs.R 6 8 orange
+band hugetlbfs hugetlbfs.B hugetlbfs.B 8 11 lyellow
+band hugetlbfs hugetlbfs.T hugetlbfs.T 11 88 green
+band minix minix.D minix.D 0 3 red
+band minix minix.T minix.T 3 88 green
+band coda coda.D coda.D 0 4 red
+band coda coda.T coda.T 4 90 green
+band affs affs.D affs.D 0 3 red
+band affs affs.B affs.B 3 6 lyellow
+band affs affs.T affs.T 6 91 green
+band jbd2 jbd2.D jbd2.D 0 4 red
+band jbd2 jbd2.B jbd2.B 4 5 lyellow
+band jbd2 jbd2.T jbd2.T 5 97 green
+band tux3 tux3.D tux3.D 0 2 red
+band tux3 tux3.B tux3.B 2 3 lyellow
+band tux3 tux3.T tux3.T 3 101 green
+band hfs hfs.D hfs.D 0 2 red
+band hfs hfs.B hfs.B 2 3 lyellow
+band hfs hfs.T hfs.T 3 99 green
+band hfs hfs.U hfs.U 99 102 lgrey
+band ufs ufs.D ufs.D 0 2 red
+band ufs ufs.R ufs.R 2 3 orange
+band ufs ufs.T ufs.T 3 102 green
+band fat fat.D fat.D 0 3 red
+band fat fat.B fat.B 3 4 lyellow
+band fat fat.T fat.T 4 104 green
+band fat fat.U fat.U 104 107 lgrey
+band hfsplus hfsplus.D hfsplus.D 0 2 red
+band hfsplus hfsplus.R hfsplus.R 2 3 orange
+band hfsplus hfsplus.T hfsplus.T 3 105 green
+band hfsplus hfsplus.U hfsplus.U 105 108 lgrey
+band lockd lockd.D lockd.D 0 3 red
+band lockd lockd.B lockd.B 3 4 lyellow
+band lockd lockd.T lockd.T 4 76 green
+band lockd lockd.U lockd.U 76 109 lgrey
+band smbfs smbfs.D smbfs.D 0 9 red
+band smbfs smbfs.T smbfs.T 9 112 green
+band smbfs smbfs.U smbfs.U 112 114 lgrey
+band udf udf.D udf.D 0 2 red
+band udf udf.R udf.R 2 3 orange
+band udf udf.B udf.B 3 4 lyellow
+band udf udf.T udf.T 4 110 green
+band udf udf.U udf.U 110 114 lgrey
+band ncpfs ncpfs.D ncpfs.D 0 8 red
+band ncpfs ncpfs.B ncpfs.B 8 9 lyellow
+band ncpfs ncpfs.T ncpfs.T 9 113 green
+band ncpfs ncpfs.U ncpfs.U 113 118 lgrey
+band jffs2 jffs2.D jffs2.D 0 3 red
+band jffs2 jffs2.T jffs2.T 3 124 green
+band jffs2 jffs2.U jffs2.U 124 136 lgrey
+band dlm dlm.D dlm.D 0 7 red
+band dlm dlm.B dlm.B 7 9 lyellow
+band dlm dlm.T dlm.T 9 131 green
+band dlm dlm.U dlm.U 131 139 lgrey
+band ecryptfs ecryptfs.D ecryptfs.D 0 8 red
+band ecryptfs ecryptfs.B ecryptfs.B 8 10 lyellow
+band ecryptfs ecryptfs.T ecryptfs.T 10 155 green
+band ntfs ntfs.D ntfs.D 0 5 red
+band ntfs ntfs.B ntfs.B 5 7 lyellow
+band ntfs ntfs.T ntfs.T 7 156 green
+band ntfs ntfs.U ntfs.U 156 159 lgrey
+band ubifs ubifs.D ubifs.D 0 5 red
+band ubifs ubifs.T ubifs.T 5 145 green
+band ubifs ubifs.U ubifs.U 145 159 lgrey
+band fuse fuse.D fuse.D 0 7 red
+band fuse fuse.R fuse.R 7 9 orange
+band fuse fuse.B fuse.B 9 10 lyellow
+band fuse fuse.T fuse.T 10 164 green
+band ext2 ext2.D ext2.D 0 5 red
+band ext2 ext2.T ext2.T 5 174 green
+band ext2 ext2.U ext2.U 174 184 lgrey
+band cifs cifs.D cifs.D 0 8 red
+band cifs cifs.R cifs.R 8 9 orange
+band cifs cifs.B cifs.B 9 10 lyellow
+band cifs cifs.T cifs.T 10 191 green
+band cifs cifs.U cifs.U 191 194 lgrey
+band kafs kafs.D kafs.D 0 6 red
+band kafs kafs.R kafs.R 6 7 orange
+band kafs kafs.B kafs.B 7 9 lyellow
+band kafs kafs.T kafs.T 9 182 green
+band kafs kafs.U kafs.U 182 196 lgrey
+band jfs jfs.D jfs.D 0 4 red
+band jfs jfs.R jfs.R 4 6 orange
+band jfs jfs.B jfs.B 6 7 lyellow
+band jfs jfs.T jfs.T 7 206 green
+band jfs jfs.U jfs.U 206 208 lgrey
+band gfs2 gfs2.D gfs2.D 0 8 red
+band gfs2 gfs2.B gfs2.B 8 9 lyellow
+band gfs2 gfs2.T gfs2.T 9 235 green
+band reiserfs reiserfs.D reiserfs.D 0 2 red
+band reiserfs reiserfs.T reiserfs.T 2 235 green
+band nfsd nfsd.D nfsd.D 0 4 red
+band nfsd nfsd.B nfsd.B 4 5 lyellow
+band nfsd nfsd.T nfsd.T 5 173 green
+band nfsd nfsd.U nfsd.U 173 237 lgrey
+band btrfs btrfs.D btrfs.D 0 8 red
+band btrfs btrfs.R btrfs.R 8 9 orange
+band btrfs btrfs.B btrfs.B 9 10 lyellow
+band btrfs btrfs.T btrfs.T 10 242 green
+band btrfs btrfs.U btrfs.U 242 251 lgrey
+band ext3 ext3.D ext3.D 0 5 red
+band ext3 ext3.T ext3.T 5 216 green
+band ext3 ext3.U ext3.U 216 260 lgrey
+band proc proc.D proc.D 0 25 red
+band proc proc.R proc.R 25 34 orange
+band proc proc.B proc.B 34 46 lyellow
+band proc proc.T proc.T 46 262 green
+band xfs xfs.D xfs.D 0 11 red
+band xfs xfs.R xfs.R 11 13 orange
+band xfs xfs.B xfs.B 13 16 lyellow
+band xfs xfs.T xfs.T 16 276 green
+band xfs xfs.U xfs.U 276 277 lgrey
+band ocfs2 ocfs2.D ocfs2.D 0 6 red
+band ocfs2 ocfs2.T ocfs2.T 6 239 green
+band ocfs2 ocfs2.U ocfs2.U 239 283 lgrey
+band ext4 ext4.D ext4.D 0 9 red
+band ext4 ext4.R ext4.R 9 10 orange
+band ext4 ext4.B ext4.B 10 12 lyellow
+band ext4 ext4.T ext4.T 12 273 green
+band ext4 ext4.U ext4.U 273 322 lgrey
+band nfs nfs.D nfs.D 0 12 red
+band nfs nfs.R nfs.R 12 13 orange
+band nfs nfs.B nfs.B 13 16 lyellow
+band nfs nfs.T nfs.T 16 269 green
+band nfs nfs.U nfs.U 269 329 lgrey
+band vmlinux vmlinux.D vmlinux.D 0 621 red
+band vmlinux vmlinux.R vmlinux.R 621 780 orange
+band vmlinux vmlinux.B vmlinux.B 780 1263 lyellow
+band vmlinux vmlinux.T vmlinux.T 1263 9310 green

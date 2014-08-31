@@ -1,0 +1,1571 @@
+>>>>>>>>>> Cleaning...
+  CLEAN   /mnt/hdb1/home/raz/work/fsbox/v2.6/linux-tux3
+  CLEAN   .tmp_versions
+  CLEAN   scripts/basic
+  CLEAN   scripts/genksyms
+  CLEAN   scripts/kconfig
+  CLEAN   scripts/mod
+  CLEAN   scripts/selinux/mdp
+  CLEAN   scripts
+  CLEAN   include/config
+  CLEAN   .config include/asm include/linux/autoconf.h include/linux/version.h include/linux/utsrelease.h include/linux/bounds.h include/asm-x86/asm-offsets.h include/asm/asm-offsets.h Module.symvers Module.markers
+>>>>>>>>>> Configuring...
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/basic/docproc
+  HOSTCC  scripts/basic/hash
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/kxgettext.o
+  SHIPPED scripts/kconfig/zconf.tab.c
+  SHIPPED scripts/kconfig/lex.zconf.c
+  SHIPPED scripts/kconfig/zconf.hash.c
+  HOSTCC  scripts/kconfig/zconf.tab.o
+  HOSTLD  scripts/kconfig/conf
+scripts/kconfig/conf -m arch/x86/Kconfig
+#
+# configuration written to .config
+#
+>>>>>>>>>> Preparing...
+scripts/kconfig/conf -s arch/x86/Kconfig
+  CHK     include/linux/version.h
+  UPD     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  UPD     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CC      kernel/bounds.s
+  GEN     include/linux/bounds.h
+  CC      arch/x86/kernel/asm-offsets.s
+  GEN     include/asm/asm-offsets.h
+  CALL    scripts/checksyscalls.sh
+>>>>>>>>>> Building 9p.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  HOSTCC  scripts/genksyms/genksyms.o
+  SHIPPED scripts/genksyms/lex.c
+  SHIPPED scripts/genksyms/parse.h
+  SHIPPED scripts/genksyms/keywords.c
+  HOSTCC  scripts/genksyms/lex.o
+  SHIPPED scripts/genksyms/parse.c
+  HOSTCC  scripts/genksyms/parse.o
+  HOSTLD  scripts/genksyms/genksyms
+  CC      scripts/mod/empty.o
+  HOSTCC  scripts/mod/mk_elfconfig
+  MKELF   scripts/mod/elfconfig.h
+  HOSTCC  scripts/mod/file2alias.o
+  HOSTCC  scripts/mod/modpost.o
+  HOSTCC  scripts/mod/sumversion.o
+  HOSTLD  scripts/mod/modpost
+  HOSTCC  scripts/selinux/mdp/mdp
+  HOSTCC  scripts/ihex2fw
+  HOSTCC  scripts/kallsyms
+  HOSTCC  scripts/pnmtologo
+  HOSTCC  scripts/conmakehash
+  HOSTCC  scripts/bin2c
+  CC [M]  fs/9p/vfs_super.o
+  CC [M]  fs/9p/vfs_inode.o
+  CC [M]  fs/9p/vfs_addr.o
+  CC [M]  fs/9p/vfs_file.o
+  CC [M]  fs/9p/vfs_dir.o
+  CC [M]  fs/9p/vfs_dentry.o
+  CC [M]  fs/9p/v9fs.o
+  CC [M]  fs/9p/fid.o
+  LD [M]  fs/9p/9p.o
+  MODPOST 1 modules
+  CC      fs/9p/9p.mod.o
+  LD [M]  fs/9p/9p.ko
+>>>>>>>>>> Building adfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/adfs/dir.o
+  CC [M]  fs/adfs/dir_f.o
+  CC [M]  fs/adfs/dir_fplus.o
+  CC [M]  fs/adfs/file.o
+  CC [M]  fs/adfs/inode.o
+  CC [M]  fs/adfs/map.o
+  CC [M]  fs/adfs/super.o
+  LD [M]  fs/adfs/adfs.o
+  MODPOST 2 modules
+  CC      fs/adfs/adfs.mod.o
+  LD [M]  fs/adfs/adfs.ko
+>>>>>>>>>> Building affs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/affs/super.o
+  CC [M]  fs/affs/namei.o
+  CC [M]  fs/affs/inode.o
+  CC [M]  fs/affs/file.o
+  CC [M]  fs/affs/dir.o
+  CC [M]  fs/affs/amigaffs.o
+  CC [M]  fs/affs/bitmap.o
+  CC [M]  fs/affs/symlink.o
+  LD [M]  fs/affs/affs.o
+  MODPOST 3 modules
+  CC      fs/affs/affs.mod.o
+  LD [M]  fs/affs/affs.ko
+>>>>>>>>>> Building kafs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/afs/callback.o
+  CC [M]  fs/afs/cell.o
+  CC [M]  fs/afs/cmservice.o
+  CC [M]  fs/afs/dir.o
+  CC [M]  fs/afs/file.o
+  CC [M]  fs/afs/flock.o
+  CC [M]  fs/afs/fsclient.o
+  CC [M]  fs/afs/inode.o
+  CC [M]  fs/afs/main.o
+  CC [M]  fs/afs/misc.o
+  CC [M]  fs/afs/mntpt.o
+  CC [M]  fs/afs/proc.o
+  CC [M]  fs/afs/rxrpc.o
+  CC [M]  fs/afs/security.o
+  CC [M]  fs/afs/server.o
+  CC [M]  fs/afs/super.o
+  CC [M]  fs/afs/netdevices.o
+  CC [M]  fs/afs/vlclient.o
+  CC [M]  fs/afs/vlocation.o
+  CC [M]  fs/afs/vnode.o
+  CC [M]  fs/afs/volume.o
+  CC [M]  fs/afs/write.o
+  LD [M]  fs/afs/kafs.o
+  MODPOST 4 modules
+  CC      fs/afs/kafs.mod.o
+  LD [M]  fs/afs/kafs.ko
+>>>>>>>>>> Building befs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/befs/datastream.o
+  CC [M]  fs/befs/btree.o
+  CC [M]  fs/befs/super.o
+  CC [M]  fs/befs/inode.o
+  CC [M]  fs/befs/debug.o
+  CC [M]  fs/befs/io.o
+  CC [M]  fs/befs/linuxvfs.o
+fs/befs/linuxvfs.c: In function 'befs_readdir':
+fs/befs/linuxvfs.c:225: warning: 'nlsnamelen' may be used uninitialized in this function
+fs/befs/linuxvfs.c:224: warning: 'nlsname' may be used uninitialized in this function
+fs/befs/linuxvfs.c: In function 'befs_lookup':
+fs/befs/linuxvfs.c:171: warning: 'utfname' may be used uninitialized in this function
+  LD [M]  fs/befs/befs.o
+  MODPOST 5 modules
+  CC      fs/befs/befs.mod.o
+  LD [M]  fs/befs/befs.ko
+>>>>>>>>>> Building bfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/bfs/inode.o
+  CC [M]  fs/bfs/file.o
+  CC [M]  fs/bfs/dir.o
+  LD [M]  fs/bfs/bfs.o
+  MODPOST 6 modules
+  CC      fs/bfs/bfs.mod.o
+  LD [M]  fs/bfs/bfs.ko
+>>>>>>>>>> Building cifs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/cifs/cifsfs.o
+  CC [M]  fs/cifs/cifssmb.o
+fs/cifs/cifssmb.c: In function 'CIFSSMBGetCIFSACL':
+fs/cifs/cifssmb.c:3120: warning: 'pdata' may be used uninitialized in this function
+  CC [M]  fs/cifs/cifs_debug.o
+  CC [M]  fs/cifs/connect.o
+  CC [M]  fs/cifs/dir.o
+  CC [M]  fs/cifs/file.o
+  CC [M]  fs/cifs/inode.o
+  CC [M]  fs/cifs/link.o
+  CC [M]  fs/cifs/misc.o
+  CC [M]  fs/cifs/netmisc.o
+  CC [M]  fs/cifs/smbdes.o
+  CC [M]  fs/cifs/smbencrypt.o
+  CC [M]  fs/cifs/transport.o
+  CC [M]  fs/cifs/asn1.o
+  CC [M]  fs/cifs/md4.o
+  CC [M]  fs/cifs/md5.o
+  CC [M]  fs/cifs/cifs_unicode.o
+  CC [M]  fs/cifs/nterr.o
+  CC [M]  fs/cifs/xattr.o
+  CC [M]  fs/cifs/cifsencrypt.o
+  CC [M]  fs/cifs/readdir.o
+fs/cifs/readdir.c: In function 'cifs_readdir':
+fs/cifs/readdir.c:993: warning: 'current_entry' may be used uninitialized in this function
+  CC [M]  fs/cifs/ioctl.o
+  CC [M]  fs/cifs/sess.o
+  CC [M]  fs/cifs/export.o
+  CC [M]  fs/cifs/cifsacl.o
+  CC [M]  fs/cifs/cifs_spnego.o
+  CC [M]  fs/cifs/dns_resolve.o
+  CC [M]  fs/cifs/cifs_dfs_ref.o
+  LD [M]  fs/cifs/cifs.o
+  MODPOST 7 modules
+  CC      fs/cifs/cifs.mod.o
+  LD [M]  fs/cifs/cifs.ko
+>>>>>>>>>> Building coda.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/coda/psdev.o
+  CC [M]  fs/coda/cache.o
+  CC [M]  fs/coda/cnode.o
+  CC [M]  fs/coda/inode.o
+  CC [M]  fs/coda/dir.o
+  CC [M]  fs/coda/file.o
+  CC [M]  fs/coda/upcall.o
+  CC [M]  fs/coda/coda_linux.o
+  CC [M]  fs/coda/symlink.o
+  CC [M]  fs/coda/pioctl.o
+  CC [M]  fs/coda/sysctl.o
+  LD [M]  fs/coda/coda.o
+  MODPOST 8 modules
+  CC      fs/coda/coda.mod.o
+  LD [M]  fs/coda/coda.ko
+>>>>>>>>>> Building configfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/configfs/inode.o
+  CC [M]  fs/configfs/file.o
+  CC [M]  fs/configfs/dir.o
+  CC [M]  fs/configfs/symlink.o
+fs/configfs/symlink.c: In function 'configfs_symlink':
+fs/configfs/symlink.c:138: warning: 'target_item' may be used uninitialized in this function
+  CC [M]  fs/configfs/mount.o
+  CC [M]  fs/configfs/item.o
+  LD [M]  fs/configfs/configfs.o
+  MODPOST 9 modules
+  CC      fs/configfs/configfs.mod.o
+  LD [M]  fs/configfs/configfs.ko
+>>>>>>>>>> Building cramfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/cramfs/inode.o
+  CC [M]  fs/cramfs/uncompress.o
+  LD [M]  fs/cramfs/cramfs.o
+  MODPOST 10 modules
+  CC      fs/cramfs/cramfs.mod.o
+  LD [M]  fs/cramfs/cramfs.ko
+>>>>>>>>>> Building debugfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC      fs/debugfs/inode.o
+  CC      fs/debugfs/file.o
+  LD      fs/debugfs/debugfs.o
+  MODPOST 10 modules
+>>>>>>>>>> Building devpts.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC      fs/devpts/inode.o
+  LD      fs/devpts/devpts.o
+  MODPOST 10 modules
+>>>>>>>>>> Building dlm.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/dlm/ast.o
+  CC [M]  fs/dlm/config.o
+  CC [M]  fs/dlm/dir.o
+  CC [M]  fs/dlm/lock.o
+  CC [M]  fs/dlm/lockspace.o
+  CC [M]  fs/dlm/main.o
+  CC [M]  fs/dlm/member.o
+  CC [M]  fs/dlm/memory.o
+  CC [M]  fs/dlm/midcomms.o
+  CC [M]  fs/dlm/netlink.o
+  CC [M]  fs/dlm/lowcomms.o
+  CC [M]  fs/dlm/plock.o
+  CC [M]  fs/dlm/rcom.o
+  CC [M]  fs/dlm/recover.o
+  CC [M]  fs/dlm/recoverd.o
+  CC [M]  fs/dlm/requestqueue.o
+  CC [M]  fs/dlm/user.o
+  CC [M]  fs/dlm/util.o
+  CC [M]  fs/dlm/debug_fs.o
+  LD [M]  fs/dlm/dlm.o
+  MODPOST 11 modules
+  CC      fs/dlm/dlm.mod.o
+  LD [M]  fs/dlm/dlm.ko
+>>>>>>>>>> Building ecryptfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ecryptfs/dentry.o
+  CC [M]  fs/ecryptfs/file.o
+  CC [M]  fs/ecryptfs/inode.o
+  CC [M]  fs/ecryptfs/main.o
+  CC [M]  fs/ecryptfs/super.o
+  CC [M]  fs/ecryptfs/mmap.o
+  CC [M]  fs/ecryptfs/read_write.o
+  CC [M]  fs/ecryptfs/crypto.o
+  CC [M]  fs/ecryptfs/keystore.o
+fs/ecryptfs/keystore.c: In function 'write_tag_1_packet':
+fs/ecryptfs/keystore.c:1848: warning: 'payload_len' may be used uninitialized in this function
+fs/ecryptfs/keystore.c:1848: note: 'payload_len' was declared here
+fs/ecryptfs/keystore.c: In function 'decrypt_pki_encrypted_session_key':
+fs/ecryptfs/keystore.c:1016: warning: 'payload_len' may be used uninitialized in this function
+  CC [M]  fs/ecryptfs/messaging.o
+  CC [M]  fs/ecryptfs/miscdev.o
+  CC [M]  fs/ecryptfs/kthread.o
+  CC [M]  fs/ecryptfs/debug.o
+  LD [M]  fs/ecryptfs/ecryptfs.o
+  MODPOST 12 modules
+  CC      fs/ecryptfs/ecryptfs.mod.o
+  LD [M]  fs/ecryptfs/ecryptfs.ko
+>>>>>>>>>> Building efs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/efs/super.o
+  CC [M]  fs/efs/inode.o
+  CC [M]  fs/efs/namei.o
+  CC [M]  fs/efs/dir.o
+  CC [M]  fs/efs/file.o
+  CC [M]  fs/efs/symlink.o
+  LD [M]  fs/efs/efs.o
+  MODPOST 13 modules
+  CC      fs/efs/efs.mod.o
+  LD [M]  fs/efs/efs.ko
+>>>>>>>>>> Skip exportfs.o (missing directory)
+>>>>>>>>>> Building ext2.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ext2/balloc.o
+  CC [M]  fs/ext2/dir.o
+  CC [M]  fs/ext2/file.o
+  CC [M]  fs/ext2/fsync.o
+  CC [M]  fs/ext2/ialloc.o
+  CC [M]  fs/ext2/inode.o
+  CC [M]  fs/ext2/ioctl.o
+  CC [M]  fs/ext2/namei.o
+  CC [M]  fs/ext2/super.o
+  CC [M]  fs/ext2/symlink.o
+  CC [M]  fs/ext2/xattr.o
+  CC [M]  fs/ext2/xattr_user.o
+  CC [M]  fs/ext2/xattr_trusted.o
+  CC [M]  fs/ext2/acl.o
+  CC [M]  fs/ext2/xattr_security.o
+  CC [M]  fs/ext2/xip.o
+  LD [M]  fs/ext2/ext2.o
+  MODPOST 14 modules
+  CC      fs/ext2/ext2.mod.o
+  LD [M]  fs/ext2/ext2.ko
+>>>>>>>>>> Building ext3.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ext3/balloc.o
+  CC [M]  fs/ext3/bitmap.o
+  CC [M]  fs/ext3/dir.o
+  CC [M]  fs/ext3/file.o
+  CC [M]  fs/ext3/fsync.o
+  CC [M]  fs/ext3/ialloc.o
+  CC [M]  fs/ext3/inode.o
+  CC [M]  fs/ext3/ioctl.o
+  CC [M]  fs/ext3/namei.o
+  CC [M]  fs/ext3/super.o
+  CC [M]  fs/ext3/symlink.o
+  CC [M]  fs/ext3/hash.o
+  CC [M]  fs/ext3/resize.o
+  CC [M]  fs/ext3/ext3_jbd.o
+  CC [M]  fs/ext3/xattr.o
+  CC [M]  fs/ext3/xattr_user.o
+  CC [M]  fs/ext3/xattr_trusted.o
+  CC [M]  fs/ext3/acl.o
+  CC [M]  fs/ext3/xattr_security.o
+  LD [M]  fs/ext3/ext3.o
+  MODPOST 15 modules
+  CC      fs/ext3/ext3.mod.o
+  LD [M]  fs/ext3/ext3.ko
+>>>>>>>>>> Building ext4.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ext4/balloc.o
+  CC [M]  fs/ext4/bitmap.o
+  CC [M]  fs/ext4/dir.o
+  CC [M]  fs/ext4/file.o
+  CC [M]  fs/ext4/fsync.o
+  CC [M]  fs/ext4/ialloc.o
+  CC [M]  fs/ext4/inode.o
+  CC [M]  fs/ext4/ioctl.o
+  CC [M]  fs/ext4/namei.o
+  CC [M]  fs/ext4/super.o
+  CC [M]  fs/ext4/symlink.o
+  CC [M]  fs/ext4/hash.o
+  CC [M]  fs/ext4/resize.o
+  CC [M]  fs/ext4/extents.o
+  CC [M]  fs/ext4/ext4_jbd2.o
+  CC [M]  fs/ext4/migrate.o
+  CC [M]  fs/ext4/mballoc.o
+  CC [M]  fs/ext4/xattr.o
+  CC [M]  fs/ext4/xattr_user.o
+  CC [M]  fs/ext4/xattr_trusted.o
+  CC [M]  fs/ext4/acl.o
+  CC [M]  fs/ext4/xattr_security.o
+  LD [M]  fs/ext4/ext4.o
+  MODPOST 16 modules
+  CC      fs/ext4/ext4.mod.o
+  LD [M]  fs/ext4/ext4.ko
+>>>>>>>>>> Building ext4dev.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+make[1]: *** No rule to make target `fs/ext4/ext4dev.o'.  Stop.
+make: *** [fs/ext4/ext4dev.ko] Error 2
+>>>>>>>>>> Building ext4dev.o (2nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+make[1]: *** No rule to make target `fs/ext4/ext4dev.o'.  Stop.
+make: *** [fs/ext4/ext4dev.ko] Error 2
+cp: cannot stat `fs/ext4/ext4dev.o': No such file or directory
+>>>>>>>>>> Building fat.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/fat/cache.o
+  CC [M]  fs/fat/dir.o
+  CC [M]  fs/fat/fatent.o
+  CC [M]  fs/fat/file.o
+  CC [M]  fs/fat/inode.o
+  CC [M]  fs/fat/misc.o
+  CC [M]  fs/fat/namei_msdos.o
+  CC [M]  fs/fat/namei_vfat.o
+fs/fat/namei_vfat.c: In function 'vfat_add_entry':
+fs/fat/namei_vfat.c:603: warning: 'ulen' may be used uninitialized in this function
+fs/fat/namei_vfat.c:603: note: 'ulen' was declared here
+fs/fat/namei_vfat.c:598: warning: 'lcase' may be used uninitialized in this function
+fs/fat/namei_vfat.c:598: note: 'lcase' was declared here
+  LD [M]  fs/fat/fat.o
+  MODPOST 17 modules
+  CC      fs/fat/fat.mod.o
+  LD [M]  fs/fat/fat.ko
+>>>>>>>>>> Building vfat.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  LD [M]  fs/fat/vfat.o
+  MODPOST 18 modules
+  CC      fs/fat/vfat.mod.o
+  LD [M]  fs/fat/vfat.ko
+>>>>>>>>>> Building msdos.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  LD [M]  fs/fat/msdos.o
+  MODPOST 19 modules
+  CC      fs/fat/msdos.mod.o
+  LD [M]  fs/fat/msdos.ko
+>>>>>>>>>> Building freevxfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/freevxfs/vxfs_bmap.o
+  CC [M]  fs/freevxfs/vxfs_fshead.o
+  CC [M]  fs/freevxfs/vxfs_immed.o
+  CC [M]  fs/freevxfs/vxfs_inode.o
+  CC [M]  fs/freevxfs/vxfs_lookup.o
+  CC [M]  fs/freevxfs/vxfs_olt.o
+  CC [M]  fs/freevxfs/vxfs_subr.o
+  CC [M]  fs/freevxfs/vxfs_super.o
+  LD [M]  fs/freevxfs/freevxfs.o
+  MODPOST 20 modules
+  CC      fs/freevxfs/freevxfs.mod.o
+  LD [M]  fs/freevxfs/freevxfs.ko
+>>>>>>>>>> Building fuse.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/fuse/dev.o
+  CC [M]  fs/fuse/dir.o
+  CC [M]  fs/fuse/file.o
+  CC [M]  fs/fuse/inode.o
+  CC [M]  fs/fuse/control.o
+  LD [M]  fs/fuse/fuse.o
+  MODPOST 21 modules
+  CC      fs/fuse/fuse.mod.o
+  LD [M]  fs/fuse/fuse.ko
+>>>>>>>>>> Building gfs2.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/gfs2/acl.o
+  CC [M]  fs/gfs2/bmap.o
+  CC [M]  fs/gfs2/dir.o
+  CC [M]  fs/gfs2/eaops.o
+  CC [M]  fs/gfs2/eattr.o
+  CC [M]  fs/gfs2/glock.o
+  CC [M]  fs/gfs2/glops.o
+  CC [M]  fs/gfs2/inode.o
+  CC [M]  fs/gfs2/log.o
+  CC [M]  fs/gfs2/lops.o
+  CC [M]  fs/gfs2/locking.o
+  CC [M]  fs/gfs2/main.o
+  CC [M]  fs/gfs2/meta_io.o
+  CC [M]  fs/gfs2/mount.o
+  CC [M]  fs/gfs2/ops_address.o
+  CC [M]  fs/gfs2/ops_dentry.o
+  CC [M]  fs/gfs2/ops_export.o
+  CC [M]  fs/gfs2/ops_file.o
+  CC [M]  fs/gfs2/ops_fstype.o
+  CC [M]  fs/gfs2/ops_inode.o
+  CC [M]  fs/gfs2/ops_super.o
+  CC [M]  fs/gfs2/quota.o
+  CC [M]  fs/gfs2/recovery.o
+  CC [M]  fs/gfs2/rgrp.o
+  CC [M]  fs/gfs2/super.o
+  CC [M]  fs/gfs2/sys.o
+  CC [M]  fs/gfs2/trans.o
+  CC [M]  fs/gfs2/util.o
+  LD [M]  fs/gfs2/gfs2.o
+  MODPOST 22 modules
+  CC      fs/gfs2/gfs2.mod.o
+  LD [M]  fs/gfs2/gfs2.ko
+>>>>>>>>>> Building hfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/hfs/bitmap.o
+  CC [M]  fs/hfs/bfind.o
+  CC [M]  fs/hfs/bnode.o
+  CC [M]  fs/hfs/brec.o
+  CC [M]  fs/hfs/btree.o
+  CC [M]  fs/hfs/catalog.o
+  CC [M]  fs/hfs/dir.o
+  CC [M]  fs/hfs/extent.o
+  CC [M]  fs/hfs/inode.o
+  CC [M]  fs/hfs/attr.o
+  CC [M]  fs/hfs/mdb.o
+  CC [M]  fs/hfs/part_tbl.o
+  CC [M]  fs/hfs/string.o
+  CC [M]  fs/hfs/super.o
+  CC [M]  fs/hfs/sysdep.o
+  CC [M]  fs/hfs/trans.o
+  LD [M]  fs/hfs/hfs.o
+  MODPOST 23 modules
+  CC      fs/hfs/hfs.mod.o
+  LD [M]  fs/hfs/hfs.ko
+>>>>>>>>>> Building hfsplus.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/hfsplus/super.o
+  CC [M]  fs/hfsplus/options.o
+  CC [M]  fs/hfsplus/inode.o
+  CC [M]  fs/hfsplus/ioctl.o
+  CC [M]  fs/hfsplus/extents.o
+  CC [M]  fs/hfsplus/catalog.o
+  CC [M]  fs/hfsplus/dir.o
+  CC [M]  fs/hfsplus/btree.o
+  CC [M]  fs/hfsplus/bnode.o
+  CC [M]  fs/hfsplus/brec.o
+  CC [M]  fs/hfsplus/bfind.o
+  CC [M]  fs/hfsplus/tables.o
+  CC [M]  fs/hfsplus/unicode.o
+  CC [M]  fs/hfsplus/wrapper.o
+  CC [M]  fs/hfsplus/bitmap.o
+  CC [M]  fs/hfsplus/part_tbl.o
+  LD [M]  fs/hfsplus/hfsplus.o
+  MODPOST 24 modules
+  CC      fs/hfsplus/hfsplus.mod.o
+  LD [M]  fs/hfsplus/hfsplus.ko
+>>>>>>>>>> Building hostfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+make[1]: *** No rule to make target `fs/hostfs/hostfs.o'.  Stop.
+make: *** [fs/hostfs/hostfs.ko] Error 2
+>>>>>>>>>> Building hostfs.o (2nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/hostfs/hostfs_kern.o
+In file included from fs/hostfs/hostfs_kern.c:16:
+fs/hostfs/hostfs.h:4:16: error: os.h: No such file or directory
+fs/hostfs/hostfs_kern.c:17:18: error: init.h: No such file or directory
+fs/hostfs/hostfs_kern.c:18:18: error: kern.h: No such file or directory
+fs/hostfs/hostfs_kern.c: In function 'hostfs_read_inode':
+fs/hostfs/hostfs_kern.c:224: error: 'OS_TYPE_SYMLINK' undeclared (first use in this function)
+fs/hostfs/hostfs_kern.c:224: error: (Each undeclared identifier is reported only once
+fs/hostfs/hostfs_kern.c:224: error: for each function it appears in.)
+fs/hostfs/hostfs_kern.c: In function 'init_inode':
+fs/hostfs/hostfs_kern.c:562: error: 'OS_TYPE_DIR' undeclared (first use in this function)
+fs/hostfs/hostfs_kern.c:565: error: 'OS_TYPE_SYMLINK' undeclared (first use in this function)
+fs/hostfs/hostfs_kern.c:579: error: 'OS_TYPE_CHARDEV' undeclared (first use in this function)
+fs/hostfs/hostfs_kern.c:582: error: 'OS_TYPE_BLOCKDEV' undeclared (first use in this function)
+fs/hostfs/hostfs_kern.c:585: error: 'OS_TYPE_FIFO' undeclared (first use in this function)
+fs/hostfs/hostfs_kern.c:588: error: 'OS_TYPE_SOCK' undeclared (first use in this function)
+make[1]: *** [fs/hostfs/hostfs_kern.o] Error 1
+make: *** [fs/hostfs/hostfs.ko] Error 2
+cp: cannot stat `fs/hostfs/hostfs.o': No such file or directory
+>>>>>>>>>> Building hpfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/hpfs/alloc.o
+  CC [M]  fs/hpfs/anode.o
+  CC [M]  fs/hpfs/buffer.o
+  CC [M]  fs/hpfs/dentry.o
+  CC [M]  fs/hpfs/dir.o
+  CC [M]  fs/hpfs/dnode.o
+  CC [M]  fs/hpfs/ea.o
+  CC [M]  fs/hpfs/file.o
+  CC [M]  fs/hpfs/inode.o
+  CC [M]  fs/hpfs/map.o
+  CC [M]  fs/hpfs/name.o
+  CC [M]  fs/hpfs/namei.o
+  CC [M]  fs/hpfs/super.o
+  LD [M]  fs/hpfs/hpfs.o
+  MODPOST 25 modules
+  CC      fs/hpfs/hpfs.mod.o
+  LD [M]  fs/hpfs/hpfs.ko
+>>>>>>>>>> Building hppfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC      fs/hppfs/hppfs.o
+fs/hppfs/hppfs.c:19:16: error: os.h: No such file or directory
+fs/hppfs/hppfs.c: In function 'file_removed':
+fs/hppfs/hppfs.c:129: error: implicit declaration of function 'os_open_file'
+fs/hppfs/hppfs.c:129: error: implicit declaration of function 'of_read'
+fs/hppfs/hppfs.c:129: error: implicit declaration of function 'OPENFLAGS'
+fs/hppfs/hppfs.c:132: error: implicit declaration of function 'os_close_file'
+fs/hppfs/hppfs.c: In function 'hppfs_read_file':
+fs/hppfs/hppfs.c:226: error: implicit declaration of function 'os_read_file'
+fs/hppfs/hppfs.c: In function 'hppfs_read':
+fs/hppfs/hppfs.c:277: error: implicit declaration of function 'os_seek_file'
+fs/hppfs/hppfs.c: In function 'open_host_sock':
+fs/hppfs/hppfs.c:311: error: implicit declaration of function 'os_connect_socket'
+fs/hppfs/hppfs.c: In function 'hppfs_get_data':
+fs/hppfs/hppfs.c:359: error: implicit declaration of function 'os_write_file'
+fs/hppfs/hppfs.c:360: error: implicit declaration of function 'os_shutdown_socket'
+fs/hppfs/hppfs.c: In function 'hppfs_open':
+fs/hppfs/hppfs.c:455: error: implicit declaration of function 'os_file_type'
+fs/hppfs/hppfs.c:456: error: 'OS_TYPE_FILE' undeclared (first use in this function)
+fs/hppfs/hppfs.c:456: error: (Each undeclared identifier is reported only once
+fs/hppfs/hppfs.c:456: error: for each function it appears in.)
+fs/hppfs/hppfs.c:465: error: 'OS_TYPE_DIR' undeclared (first use in this function)
+make[1]: *** [fs/hppfs/hppfs.o] Error 1
+make: *** [fs/hppfs/hppfs.ko] Error 2
+>>>>>>>>>> Building hppfs.o (2nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/hppfs/hppfs.o
+fs/hppfs/hppfs.c:19:16: error: os.h: No such file or directory
+fs/hppfs/hppfs.c: In function 'file_removed':
+fs/hppfs/hppfs.c:129: error: implicit declaration of function 'os_open_file'
+fs/hppfs/hppfs.c:129: error: implicit declaration of function 'of_read'
+fs/hppfs/hppfs.c:129: error: implicit declaration of function 'OPENFLAGS'
+fs/hppfs/hppfs.c:132: error: implicit declaration of function 'os_close_file'
+fs/hppfs/hppfs.c: In function 'hppfs_read_file':
+fs/hppfs/hppfs.c:226: error: implicit declaration of function 'os_read_file'
+fs/hppfs/hppfs.c: In function 'hppfs_read':
+fs/hppfs/hppfs.c:277: error: implicit declaration of function 'os_seek_file'
+fs/hppfs/hppfs.c: In function 'open_host_sock':
+fs/hppfs/hppfs.c:311: error: implicit declaration of function 'os_connect_socket'
+fs/hppfs/hppfs.c: In function 'hppfs_get_data':
+fs/hppfs/hppfs.c:359: error: implicit declaration of function 'os_write_file'
+fs/hppfs/hppfs.c:360: error: implicit declaration of function 'os_shutdown_socket'
+fs/hppfs/hppfs.c: In function 'hppfs_open':
+fs/hppfs/hppfs.c:455: error: implicit declaration of function 'os_file_type'
+fs/hppfs/hppfs.c:456: error: 'OS_TYPE_FILE' undeclared (first use in this function)
+fs/hppfs/hppfs.c:456: error: (Each undeclared identifier is reported only once
+fs/hppfs/hppfs.c:456: error: for each function it appears in.)
+fs/hppfs/hppfs.c:465: error: 'OS_TYPE_DIR' undeclared (first use in this function)
+make[1]: *** [fs/hppfs/hppfs.o] Error 1
+make: *** [fs/hppfs/hppfs.ko] Error 2
+cp: cannot stat `fs/hppfs/hppfs.o': No such file or directory
+>>>>>>>>>> Building hugetlbfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC      fs/hugetlbfs/inode.o
+  LD      fs/hugetlbfs/hugetlbfs.o
+  MODPOST 25 modules
+>>>>>>>>>> Building isofs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/isofs/namei.o
+  CC [M]  fs/isofs/inode.o
+  CC [M]  fs/isofs/dir.o
+  CC [M]  fs/isofs/util.o
+  CC [M]  fs/isofs/rock.o
+  CC [M]  fs/isofs/export.o
+  CC [M]  fs/isofs/joliet.o
+  CC [M]  fs/isofs/compress.o
+  LD [M]  fs/isofs/isofs.o
+  MODPOST 26 modules
+  CC      fs/isofs/isofs.mod.o
+  LD [M]  fs/isofs/isofs.ko
+>>>>>>>>>> Building jbd.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/jbd/transaction.o
+  CC [M]  fs/jbd/commit.o
+  CC [M]  fs/jbd/recovery.o
+  CC [M]  fs/jbd/checkpoint.o
+  CC [M]  fs/jbd/revoke.o
+  CC [M]  fs/jbd/journal.o
+  LD [M]  fs/jbd/jbd.o
+  MODPOST 27 modules
+  CC      fs/ext3/ext3.mod.o
+  LD [M]  fs/ext3/ext3.ko
+  CC      fs/jbd/jbd.mod.o
+  LD [M]  fs/jbd/jbd.ko
+>>>>>>>>>> Building jbd2.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/jbd2/transaction.o
+  CC [M]  fs/jbd2/commit.o
+  CC [M]  fs/jbd2/recovery.o
+  CC [M]  fs/jbd2/checkpoint.o
+  CC [M]  fs/jbd2/revoke.o
+  CC [M]  fs/jbd2/journal.o
+  LD [M]  fs/jbd2/jbd2.o
+  MODPOST 28 modules
+  CC      fs/ext4/ext4.mod.o
+  LD [M]  fs/ext4/ext4.ko
+  CC      fs/jbd2/jbd2.mod.o
+  LD [M]  fs/jbd2/jbd2.ko
+>>>>>>>>>> Building jffs2.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/jffs2/compr.o
+  CC [M]  fs/jffs2/dir.o
+  CC [M]  fs/jffs2/file.o
+  CC [M]  fs/jffs2/ioctl.o
+  CC [M]  fs/jffs2/nodelist.o
+  CC [M]  fs/jffs2/malloc.o
+  CC [M]  fs/jffs2/read.o
+  CC [M]  fs/jffs2/nodemgmt.o
+  CC [M]  fs/jffs2/readinode.o
+  CC [M]  fs/jffs2/write.o
+  CC [M]  fs/jffs2/scan.o
+  CC [M]  fs/jffs2/gc.o
+  CC [M]  fs/jffs2/symlink.o
+  CC [M]  fs/jffs2/build.o
+  CC [M]  fs/jffs2/erase.o
+  CC [M]  fs/jffs2/background.o
+  CC [M]  fs/jffs2/fs.o
+  CC [M]  fs/jffs2/writev.o
+  CC [M]  fs/jffs2/super.o
+  CC [M]  fs/jffs2/debug.o
+  CC [M]  fs/jffs2/wbuf.o
+  CC [M]  fs/jffs2/xattr.o
+  CC [M]  fs/jffs2/xattr_trusted.o
+  CC [M]  fs/jffs2/xattr_user.o
+  CC [M]  fs/jffs2/security.o
+  CC [M]  fs/jffs2/acl.o
+  CC [M]  fs/jffs2/compr_rubin.o
+  CC [M]  fs/jffs2/compr_rtime.o
+  CC [M]  fs/jffs2/compr_zlib.o
+  CC [M]  fs/jffs2/compr_lzo.o
+  CC [M]  fs/jffs2/summary.o
+  LD [M]  fs/jffs2/jffs2.o
+  MODPOST 29 modules
+  CC      fs/jffs2/jffs2.mod.o
+  LD [M]  fs/jffs2/jffs2.ko
+>>>>>>>>>> Building jfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/jfs/super.o
+  CC [M]  fs/jfs/file.o
+  CC [M]  fs/jfs/inode.o
+  CC [M]  fs/jfs/namei.o
+  CC [M]  fs/jfs/jfs_mount.o
+  CC [M]  fs/jfs/jfs_umount.o
+  CC [M]  fs/jfs/jfs_xtree.o
+  CC [M]  fs/jfs/jfs_imap.o
+  CC [M]  fs/jfs/jfs_debug.o
+  CC [M]  fs/jfs/jfs_dmap.o
+  CC [M]  fs/jfs/jfs_unicode.o
+  CC [M]  fs/jfs/jfs_dtree.o
+  CC [M]  fs/jfs/jfs_inode.o
+  CC [M]  fs/jfs/jfs_extent.o
+  CC [M]  fs/jfs/symlink.o
+  CC [M]  fs/jfs/jfs_metapage.o
+  CC [M]  fs/jfs/jfs_logmgr.o
+  CC [M]  fs/jfs/jfs_txnmgr.o
+  CC [M]  fs/jfs/jfs_uniupr.o
+  CC [M]  fs/jfs/resize.o
+  CC [M]  fs/jfs/xattr.o
+  CC [M]  fs/jfs/ioctl.o
+  CC [M]  fs/jfs/acl.o
+  LD [M]  fs/jfs/jfs.o
+  MODPOST 30 modules
+  CC      fs/jfs/jfs.mod.o
+  LD [M]  fs/jfs/jfs.ko
+>>>>>>>>>> Building lockd.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/lockd/clntlock.o
+  CC [M]  fs/lockd/clntproc.o
+  CC [M]  fs/lockd/host.o
+  CC [M]  fs/lockd/svc.o
+  CC [M]  fs/lockd/svclock.o
+  CC [M]  fs/lockd/svcshare.o
+  CC [M]  fs/lockd/svcproc.o
+  CC [M]  fs/lockd/svcsubs.o
+  CC [M]  fs/lockd/mon.o
+  CC [M]  fs/lockd/xdr.o
+  CC [M]  fs/lockd/grace.o
+  CC [M]  fs/lockd/xdr4.o
+  CC [M]  fs/lockd/svc4proc.o
+  LD [M]  fs/lockd/lockd.o
+  MODPOST 31 modules
+  CC      fs/lockd/lockd.mod.o
+  LD [M]  fs/lockd/lockd.ko
+>>>>>>>>>> Building minix.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/minix/bitmap.o
+  CC [M]  fs/minix/itree_v1.o
+  CC [M]  fs/minix/itree_v2.o
+  CC [M]  fs/minix/namei.o
+  CC [M]  fs/minix/inode.o
+  CC [M]  fs/minix/file.o
+  CC [M]  fs/minix/dir.o
+  LD [M]  fs/minix/minix.o
+  MODPOST 32 modules
+  CC      fs/minix/minix.mod.o
+  LD [M]  fs/minix/minix.ko
+>>>>>>>>>> Building ncpfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ncpfs/dir.o
+  CC [M]  fs/ncpfs/file.o
+  CC [M]  fs/ncpfs/inode.o
+  CC [M]  fs/ncpfs/ioctl.o
+  CC [M]  fs/ncpfs/mmap.o
+  CC [M]  fs/ncpfs/ncplib_kernel.o
+  CC [M]  fs/ncpfs/sock.o
+  CC [M]  fs/ncpfs/ncpsign_kernel.o
+  CC [M]  fs/ncpfs/getopt.o
+  CC [M]  fs/ncpfs/symlink.o
+  LD [M]  fs/ncpfs/ncpfs.o
+  MODPOST 33 modules
+  CC      fs/ncpfs/ncpfs.mod.o
+  LD [M]  fs/ncpfs/ncpfs.ko
+>>>>>>>>>> Building nfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/nfs/client.o
+  CC [M]  fs/nfs/dir.o
+  CC [M]  fs/nfs/file.o
+  CC [M]  fs/nfs/getroot.o
+  CC [M]  fs/nfs/inode.o
+  CC [M]  fs/nfs/super.o
+  CC [M]  fs/nfs/nfs2xdr.o
+  CC [M]  fs/nfs/direct.o
+  CC [M]  fs/nfs/pagelist.o
+  CC [M]  fs/nfs/proc.o
+  CC [M]  fs/nfs/read.o
+  CC [M]  fs/nfs/symlink.o
+  CC [M]  fs/nfs/unlink.o
+  CC [M]  fs/nfs/write.o
+  CC [M]  fs/nfs/namespace.o
+  CC [M]  fs/nfs/mount_clnt.o
+  CC [M]  fs/nfs/nfs3proc.o
+  CC [M]  fs/nfs/nfs3xdr.o
+  CC [M]  fs/nfs/nfs3acl.o
+  CC [M]  fs/nfs/nfs4proc.o
+  CC [M]  fs/nfs/nfs4xdr.o
+  CC [M]  fs/nfs/nfs4state.o
+  CC [M]  fs/nfs/nfs4renewd.o
+  CC [M]  fs/nfs/delegation.o
+  CC [M]  fs/nfs/idmap.o
+  CC [M]  fs/nfs/callback.o
+  CC [M]  fs/nfs/callback_xdr.o
+  CC [M]  fs/nfs/callback_proc.o
+  CC [M]  fs/nfs/nfs4namespace.o
+  CC [M]  fs/nfs/sysctl.o
+  LD [M]  fs/nfs/nfs.o
+  MODPOST 34 modules
+  CC      fs/nfs/nfs.mod.o
+  LD [M]  fs/nfs/nfs.ko
+>>>>>>>>>> Building nfsd.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/nfsd/nfssvc.o
+  CC [M]  fs/nfsd/nfsctl.o
+  CC [M]  fs/nfsd/nfsproc.o
+  CC [M]  fs/nfsd/nfsfh.o
+  CC [M]  fs/nfsd/vfs.o
+  CC [M]  fs/nfsd/export.o
+  CC [M]  fs/nfsd/auth.o
+  CC [M]  fs/nfsd/lockd.o
+  CC [M]  fs/nfsd/nfscache.o
+  CC [M]  fs/nfsd/nfsxdr.o
+  CC [M]  fs/nfsd/stats.o
+  CC [M]  fs/nfsd/nfs2acl.o
+  CC [M]  fs/nfsd/nfs3proc.o
+  CC [M]  fs/nfsd/nfs3xdr.o
+  CC [M]  fs/nfsd/nfs3acl.o
+  CC [M]  fs/nfsd/nfs4proc.o
+  CC [M]  fs/nfsd/nfs4xdr.o
+  CC [M]  fs/nfsd/nfs4state.o
+  CC [M]  fs/nfsd/nfs4idmap.o
+  CC [M]  fs/nfsd/nfs4acl.o
+  CC [M]  fs/nfsd/nfs4callback.o
+  CC [M]  fs/nfsd/nfs4recover.o
+  LD [M]  fs/nfsd/nfsd.o
+  MODPOST 35 modules
+  CC      fs/nfsd/nfsd.mod.o
+  LD [M]  fs/nfsd/nfsd.ko
+>>>>>>>>>> Building ntfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ntfs/aops.o
+  CC [M]  fs/ntfs/attrib.o
+  CC [M]  fs/ntfs/collate.o
+  CC [M]  fs/ntfs/compress.o
+  CC [M]  fs/ntfs/debug.o
+  CC [M]  fs/ntfs/dir.o
+  CC [M]  fs/ntfs/file.o
+  CC [M]  fs/ntfs/index.o
+  CC [M]  fs/ntfs/inode.o
+  CC [M]  fs/ntfs/mft.o
+  CC [M]  fs/ntfs/mst.o
+  CC [M]  fs/ntfs/namei.o
+  CC [M]  fs/ntfs/runlist.o
+  CC [M]  fs/ntfs/super.o
+  CC [M]  fs/ntfs/sysctl.o
+  CC [M]  fs/ntfs/unistr.o
+  CC [M]  fs/ntfs/upcase.o
+  CC [M]  fs/ntfs/bitmap.o
+  CC [M]  fs/ntfs/lcnalloc.o
+  CC [M]  fs/ntfs/logfile.o
+  CC [M]  fs/ntfs/quota.o
+  CC [M]  fs/ntfs/usnjrnl.o
+  LD [M]  fs/ntfs/ntfs.o
+  MODPOST 36 modules
+  CC      fs/ntfs/ntfs.mod.o
+  LD [M]  fs/ntfs/ntfs.ko
+>>>>>>>>>> Building ocfs2.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ocfs2/alloc.o
+  CC [M]  fs/ocfs2/aops.o
+fs/ocfs2/aops.c: In function 'ocfs2_write_begin_nolock':
+fs/ocfs2/aops.c:1646: warning: 'wc' may be used uninitialized in this function
+  CC [M]  fs/ocfs2/blockcheck.o
+  CC [M]  fs/ocfs2/buffer_head_io.o
+  CC [M]  fs/ocfs2/dcache.o
+  CC [M]  fs/ocfs2/dir.o
+  CC [M]  fs/ocfs2/dlmglue.o
+  CC [M]  fs/ocfs2/export.o
+  CC [M]  fs/ocfs2/extent_map.o
+  CC [M]  fs/ocfs2/file.o
+  CC [M]  fs/ocfs2/heartbeat.o
+  CC [M]  fs/ocfs2/inode.o
+  CC [M]  fs/ocfs2/ioctl.o
+fs/ocfs2/ioctl.c: In function 'ocfs2_ioctl':
+fs/ocfs2/ioctl.c:114: warning: 'flags' may be used uninitialized in this function
+  CC [M]  fs/ocfs2/journal.o
+  CC [M]  fs/ocfs2/localalloc.o
+  CC [M]  fs/ocfs2/locks.o
+  CC [M]  fs/ocfs2/mmap.o
+  CC [M]  fs/ocfs2/namei.o
+  CC [M]  fs/ocfs2/resize.o
+  CC [M]  fs/ocfs2/slot_map.o
+fs/ocfs2/slot_map.c: In function 'ocfs2_init_slot_info':
+fs/ocfs2/slot_map.c:360: warning: 'bytes' may be used uninitialized in this function
+fs/ocfs2/slot_map.c:360: note: 'bytes' was declared here
+  CC [M]  fs/ocfs2/suballoc.o
+  CC [M]  fs/ocfs2/super.o
+  CC [M]  fs/ocfs2/symlink.o
+  CC [M]  fs/ocfs2/sysfile.o
+  CC [M]  fs/ocfs2/uptodate.o
+  CC [M]  fs/ocfs2/ver.o
+  CC [M]  fs/ocfs2/quota_local.o
+  CC [M]  fs/ocfs2/quota_global.o
+  CC [M]  fs/ocfs2/xattr.o
+  CC [M]  fs/ocfs2/acl.o
+  CC [M]  fs/ocfs2/stack_o2cb.o
+  CC [M]  fs/ocfs2/stack_user.o
+fs/ocfs2/stack_user.c: In function 'user_cluster_connect':
+fs/ocfs2/stack_user.c:810: warning: 'control' may be used uninitialized in this function
+  CC [M]  fs/ocfs2/stackglue.o
+  LD [M]  fs/ocfs2/ocfs2.o
+  MODPOST 37 modules
+  CC      fs/ocfs2/ocfs2.mod.o
+  LD [M]  fs/ocfs2/ocfs2.ko
+>>>>>>>>>> Building omfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/omfs/bitmap.o
+  CC [M]  fs/omfs/dir.o
+  CC [M]  fs/omfs/file.o
+fs/omfs/file.c: In function 'omfs_get_block':
+fs/omfs/file.c:247: warning: 'remain' may be used uninitialized in this function
+fs/omfs/file.c:240: warning: 'new_block' may be used uninitialized in this function
+  CC [M]  fs/omfs/inode.o
+  LD [M]  fs/omfs/omfs.o
+  MODPOST 38 modules
+  CC      fs/omfs/omfs.mod.o
+  LD [M]  fs/omfs/omfs.ko
+>>>>>>>>>> Building openpromfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+make[1]: *** No rule to make target `fs/openpromfs/openpromfs.o'.  Stop.
+make: *** [fs/openpromfs/openpromfs.ko] Error 2
+>>>>>>>>>> Building openpromfs.o (2nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/openpromfs/inode.o
+fs/openpromfs/inode.c:16:26: error: asm/openprom.h: No such file or directory
+fs/openpromfs/inode.c:17:23: error: asm/oplib.h: No such file or directory
+fs/openpromfs/inode.c:18:22: error: asm/prom.h: No such file or directory
+fs/openpromfs/inode.c: In function 'property_show':
+fs/openpromfs/inode.c:71: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:72: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c: In function 'openpromfs_lookup':
+fs/openpromfs/inode.c:200: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:202: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:204: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:204: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:204: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:208: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:211: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:214: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:216: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:218: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:218: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:218: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:221: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:225: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:248: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:248: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:248: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:255: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c: In function 'openpromfs_readdir':
+fs/openpromfs/inode.c:285: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:285: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:285: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:285: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:285: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:285: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:297: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:299: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:303: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:310: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:314: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:316: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:320: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c:325: error: dereferencing pointer to incomplete type
+fs/openpromfs/inode.c: In function 'openprom_fill_super':
+fs/openpromfs/inode.c:403: error: implicit declaration of function 'of_find_node_by_path'
+fs/openpromfs/inode.c:403: warning: assignment makes pointer from integer without a cast
+make[1]: *** [fs/openpromfs/inode.o] Error 1
+make: *** [fs/openpromfs/openpromfs.ko] Error 2
+cp: cannot stat `fs/openpromfs/openpromfs.o': No such file or directory
+>>>>>>>>>> Building proc.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC      fs/proc/mmu.o
+  CC      fs/proc/task_mmu.o
+  CC      fs/proc/inode.o
+  CC      fs/proc/root.o
+  CC      fs/proc/base.o
+  CC      fs/proc/generic.o
+  CC      fs/proc/array.o
+  CC      fs/proc/proc_tty.o
+  CC      fs/proc/cmdline.o
+  CC      fs/proc/cpuinfo.o
+  CC      fs/proc/devices.o
+  CC      fs/proc/interrupts.o
+  CC      fs/proc/loadavg.o
+  CC      fs/proc/meminfo.o
+  CC      fs/proc/stat.o
+  CC      fs/proc/uptime.o
+  CC      fs/proc/version.o
+  CC      fs/proc/proc_sysctl.o
+  CC      fs/proc/proc_net.o
+  CC      fs/proc/kcore.o
+  CC      fs/proc/vmcore.o
+  CC      fs/proc/kmsg.o
+  CC      fs/proc/page.o
+  LD      fs/proc/proc.o
+  MODPOST 38 modules
+>>>>>>>>>> Building qnx4.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/qnx4/inode.o
+  CC [M]  fs/qnx4/dir.o
+  CC [M]  fs/qnx4/namei.o
+  CC [M]  fs/qnx4/file.o
+  CC [M]  fs/qnx4/bitmap.o
+  CC [M]  fs/qnx4/truncate.o
+  CC [M]  fs/qnx4/fsync.o
+  LD [M]  fs/qnx4/qnx4.o
+  MODPOST 39 modules
+  CC      fs/qnx4/qnx4.mod.o
+  LD [M]  fs/qnx4/qnx4.ko
+>>>>>>>>>> Building ramfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC      fs/ramfs/inode.o
+  CC      fs/ramfs/file-mmu.o
+  LD      fs/ramfs/ramfs.o
+  MODPOST 39 modules
+>>>>>>>>>> Building reiserfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/reiserfs/bitmap.o
+  CC [M]  fs/reiserfs/do_balan.o
+fs/reiserfs/do_balan.c: In function 'balance_leaf':
+fs/reiserfs/do_balan.c:1298: warning: operation on 'aux_ih' may be undefined
+  CC [M]  fs/reiserfs/namei.o
+  CC [M]  fs/reiserfs/inode.o
+  CC [M]  fs/reiserfs/file.o
+  CC [M]  fs/reiserfs/dir.o
+  CC [M]  fs/reiserfs/fix_node.o
+  CC [M]  fs/reiserfs/super.o
+  CC [M]  fs/reiserfs/prints.o
+  CC [M]  fs/reiserfs/objectid.o
+  CC [M]  fs/reiserfs/lbalance.o
+fs/reiserfs/lbalance.c: In function 'leaf_item_bottle':
+fs/reiserfs/lbalance.c:392: warning: operation on 'ih' may be undefined
+fs/reiserfs/lbalance.c:420: warning: operation on 'ih' may be undefined
+fs/reiserfs/lbalance.c: In function 'leaf_delete_items':
+fs/reiserfs/lbalance.c:777: warning: operation on 'ih' may be undefined
+  CC [M]  fs/reiserfs/ibalance.o
+  CC [M]  fs/reiserfs/stree.o
+  CC [M]  fs/reiserfs/hashes.o
+  CC [M]  fs/reiserfs/tail_conversion.o
+  CC [M]  fs/reiserfs/journal.o
+  CC [M]  fs/reiserfs/resize.o
+  CC [M]  fs/reiserfs/item_ops.o
+  CC [M]  fs/reiserfs/ioctl.o
+  CC [M]  fs/reiserfs/procfs.o
+  CC [M]  fs/reiserfs/xattr.o
+  CC [M]  fs/reiserfs/xattr_user.o
+  CC [M]  fs/reiserfs/xattr_trusted.o
+  CC [M]  fs/reiserfs/xattr_security.o
+  CC [M]  fs/reiserfs/xattr_acl.o
+  LD [M]  fs/reiserfs/reiserfs.o
+  MODPOST 40 modules
+  CC      fs/reiserfs/reiserfs.mod.o
+  LD [M]  fs/reiserfs/reiserfs.ko
+>>>>>>>>>> Building romfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/romfs/inode.o
+  LD [M]  fs/romfs/romfs.o
+  MODPOST 41 modules
+  CC      fs/romfs/romfs.mod.o
+  LD [M]  fs/romfs/romfs.ko
+>>>>>>>>>> Building smbfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/smbfs/proc.o
+  CC [M]  fs/smbfs/dir.o
+  CC [M]  fs/smbfs/cache.o
+  CC [M]  fs/smbfs/sock.o
+  CC [M]  fs/smbfs/inode.o
+  CC [M]  fs/smbfs/file.o
+  CC [M]  fs/smbfs/ioctl.o
+  CC [M]  fs/smbfs/getopt.o
+  CC [M]  fs/smbfs/symlink.o
+  CC [M]  fs/smbfs/smbiod.o
+  CC [M]  fs/smbfs/request.o
+  LD [M]  fs/smbfs/smbfs.o
+  MODPOST 42 modules
+  CC      fs/smbfs/smbfs.mod.o
+  LD [M]  fs/smbfs/smbfs.ko
+>>>>>>>>>> Building squashfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/squashfs/block.o
+  CC [M]  fs/squashfs/cache.o
+  CC [M]  fs/squashfs/dir.o
+  CC [M]  fs/squashfs/export.o
+  CC [M]  fs/squashfs/file.o
+  CC [M]  fs/squashfs/fragment.o
+  CC [M]  fs/squashfs/id.o
+  CC [M]  fs/squashfs/inode.o
+  CC [M]  fs/squashfs/namei.o
+  CC [M]  fs/squashfs/super.o
+  CC [M]  fs/squashfs/symlink.o
+  LD [M]  fs/squashfs/squashfs.o
+  MODPOST 43 modules
+  CC      fs/squashfs/squashfs.mod.o
+  LD [M]  fs/squashfs/squashfs.ko
+>>>>>>>>>> Building sysfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+make[1]: *** No rule to make target `fs/sysfs/sysfs.o'.  Stop.
+make: *** [fs/sysfs/sysfs.ko] Error 2
+>>>>>>>>>> Building sysfs.o (2nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+make[1]: *** No rule to make target `fs/sysfs/sysfs.o'.  Stop.
+make: *** [fs/sysfs/sysfs.ko] Error 2
+cp: cannot stat `fs/sysfs/sysfs.o': No such file or directory
+>>>>>>>>>> Building sysv.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/sysv/ialloc.o
+  CC [M]  fs/sysv/balloc.o
+  CC [M]  fs/sysv/inode.o
+  CC [M]  fs/sysv/itree.o
+  CC [M]  fs/sysv/file.o
+  CC [M]  fs/sysv/dir.o
+  CC [M]  fs/sysv/namei.o
+  CC [M]  fs/sysv/super.o
+  CC [M]  fs/sysv/symlink.o
+  LD [M]  fs/sysv/sysv.o
+  MODPOST 44 modules
+  CC      fs/sysv/sysv.mod.o
+  LD [M]  fs/sysv/sysv.ko
+>>>>>>>>>> Building ubifs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ubifs/shrinker.o
+  CC [M]  fs/ubifs/journal.o
+  CC [M]  fs/ubifs/file.o
+  CC [M]  fs/ubifs/dir.o
+  CC [M]  fs/ubifs/super.o
+  CC [M]  fs/ubifs/sb.o
+  CC [M]  fs/ubifs/io.o
+  CC [M]  fs/ubifs/tnc.o
+  CC [M]  fs/ubifs/master.o
+  CC [M]  fs/ubifs/scan.o
+  CC [M]  fs/ubifs/replay.o
+  CC [M]  fs/ubifs/log.o
+  CC [M]  fs/ubifs/commit.o
+  CC [M]  fs/ubifs/gc.o
+  CC [M]  fs/ubifs/orphan.o
+  CC [M]  fs/ubifs/budget.o
+  CC [M]  fs/ubifs/find.o
+  CC [M]  fs/ubifs/tnc_commit.o
+  CC [M]  fs/ubifs/compress.o
+  CC [M]  fs/ubifs/lpt.o
+  CC [M]  fs/ubifs/lprops.o
+  CC [M]  fs/ubifs/recovery.o
+  CC [M]  fs/ubifs/ioctl.o
+  CC [M]  fs/ubifs/lpt_commit.o
+  CC [M]  fs/ubifs/tnc_misc.o
+  CC [M]  fs/ubifs/debug.o
+  CC [M]  fs/ubifs/xattr.o
+  LD [M]  fs/ubifs/ubifs.o
+  MODPOST 45 modules
+  CC      fs/ubifs/ubifs.mod.o
+  LD [M]  fs/ubifs/ubifs.ko
+>>>>>>>>>> Building udf.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/udf/balloc.o
+  CC [M]  fs/udf/dir.o
+  CC [M]  fs/udf/file.o
+  CC [M]  fs/udf/ialloc.o
+  CC [M]  fs/udf/inode.o
+  CC [M]  fs/udf/lowlevel.o
+  CC [M]  fs/udf/namei.o
+  CC [M]  fs/udf/partition.o
+  CC [M]  fs/udf/super.o
+  CC [M]  fs/udf/truncate.o
+  CC [M]  fs/udf/symlink.o
+  CC [M]  fs/udf/fsync.o
+  CC [M]  fs/udf/directory.o
+  CC [M]  fs/udf/misc.o
+  CC [M]  fs/udf/udftime.o
+  CC [M]  fs/udf/unicode.o
+  LD [M]  fs/udf/udf.o
+  MODPOST 46 modules
+  CC      fs/udf/udf.mod.o
+  LD [M]  fs/udf/udf.ko
+>>>>>>>>>> Building ufs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/ufs/balloc.o
+  CC [M]  fs/ufs/cylinder.o
+  CC [M]  fs/ufs/dir.o
+  CC [M]  fs/ufs/file.o
+  CC [M]  fs/ufs/ialloc.o
+  CC [M]  fs/ufs/inode.o
+  CC [M]  fs/ufs/namei.o
+  CC [M]  fs/ufs/super.o
+  CC [M]  fs/ufs/symlink.o
+  CC [M]  fs/ufs/truncate.o
+  CC [M]  fs/ufs/util.o
+  LD [M]  fs/ufs/ufs.o
+  MODPOST 47 modules
+  CC      fs/ufs/ufs.mod.o
+  LD [M]  fs/ufs/ufs.ko
+>>>>>>>>>> Building xfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/xfs/quota/xfs_dquot.o
+  CC [M]  fs/xfs/quota/xfs_dquot_item.o
+  CC [M]  fs/xfs/quota/xfs_trans_dquot.o
+  CC [M]  fs/xfs/quota/xfs_qm_syscalls.o
+  CC [M]  fs/xfs/quota/xfs_qm_bhv.o
+  CC [M]  fs/xfs/quota/xfs_qm.o
+  CC [M]  fs/xfs/quota/xfs_qm_stats.o
+  CC [M]  fs/xfs/xfs_rtalloc.o
+  CC [M]  fs/xfs/xfs_acl.o
+  CC [M]  fs/xfs/linux-2.6/xfs_stats.o
+  CC [M]  fs/xfs/linux-2.6/xfs_sysctl.o
+  CC [M]  fs/xfs/xfs_alloc.o
+  CC [M]  fs/xfs/xfs_alloc_btree.o
+  CC [M]  fs/xfs/xfs_attr.o
+  CC [M]  fs/xfs/xfs_attr_leaf.o
+  CC [M]  fs/xfs/xfs_bit.o
+  CC [M]  fs/xfs/xfs_bmap.o
+  CC [M]  fs/xfs/xfs_bmap_btree.o
+  CC [M]  fs/xfs/xfs_btree.o
+  CC [M]  fs/xfs/xfs_buf_item.o
+  CC [M]  fs/xfs/xfs_da_btree.o
+  CC [M]  fs/xfs/xfs_dir2.o
+  CC [M]  fs/xfs/xfs_dir2_block.o
+  CC [M]  fs/xfs/xfs_dir2_data.o
+  CC [M]  fs/xfs/xfs_dir2_leaf.o
+  CC [M]  fs/xfs/xfs_dir2_node.o
+  CC [M]  fs/xfs/xfs_dir2_sf.o
+  CC [M]  fs/xfs/xfs_error.o
+  CC [M]  fs/xfs/xfs_extfree_item.o
+  CC [M]  fs/xfs/xfs_filestream.o
+  CC [M]  fs/xfs/xfs_fsops.o
+  CC [M]  fs/xfs/xfs_ialloc.o
+  CC [M]  fs/xfs/xfs_ialloc_btree.o
+  CC [M]  fs/xfs/xfs_iget.o
+  CC [M]  fs/xfs/xfs_inode.o
+  CC [M]  fs/xfs/xfs_inode_item.o
+  CC [M]  fs/xfs/xfs_iomap.o
+  CC [M]  fs/xfs/xfs_itable.o
+  CC [M]  fs/xfs/xfs_dfrag.o
+  CC [M]  fs/xfs/xfs_log.o
+  CC [M]  fs/xfs/xfs_log_recover.o
+  CC [M]  fs/xfs/xfs_mount.o
+  CC [M]  fs/xfs/xfs_mru_cache.o
+  CC [M]  fs/xfs/xfs_rename.o
+  CC [M]  fs/xfs/xfs_trans.o
+  CC [M]  fs/xfs/xfs_trans_ail.o
+  CC [M]  fs/xfs/xfs_trans_buf.o
+  CC [M]  fs/xfs/xfs_trans_extfree.o
+  CC [M]  fs/xfs/xfs_trans_inode.o
+  CC [M]  fs/xfs/xfs_trans_item.o
+  CC [M]  fs/xfs/xfs_utils.o
+  CC [M]  fs/xfs/xfs_vnodeops.o
+  CC [M]  fs/xfs/xfs_rw.o
+  CC [M]  fs/xfs/xfs_dmops.o
+  CC [M]  fs/xfs/xfs_qmops.o
+  CC [M]  fs/xfs/linux-2.6/kmem.o
+  CC [M]  fs/xfs/linux-2.6/xfs_aops.o
+  CC [M]  fs/xfs/linux-2.6/xfs_buf.o
+  CC [M]  fs/xfs/linux-2.6/xfs_export.o
+  CC [M]  fs/xfs/linux-2.6/xfs_file.o
+  CC [M]  fs/xfs/linux-2.6/xfs_fs_subr.o
+  CC [M]  fs/xfs/linux-2.6/xfs_globals.o
+  CC [M]  fs/xfs/linux-2.6/xfs_ioctl.o
+  CC [M]  fs/xfs/linux-2.6/xfs_iops.o
+  CC [M]  fs/xfs/linux-2.6/xfs_lrw.o
+  CC [M]  fs/xfs/linux-2.6/xfs_super.o
+  CC [M]  fs/xfs/linux-2.6/xfs_sync.o
+  CC [M]  fs/xfs/linux-2.6/xfs_xattr.o
+  CC [M]  fs/xfs/support/debug.o
+  CC [M]  fs/xfs/support/uuid.o
+  LD [M]  fs/xfs/xfs.o
+  MODPOST 48 modules
+  CC      fs/xfs/xfs.mod.o
+  LD [M]  fs/xfs/xfs.ko
+>>>>>>>>>> Skip devfs.o (missing directory)
+>>>>>>>>>> Skip devpts.o (already exists)
+>>>>>>>>>> Skip intermezzo.o (missing directory)
+>>>>>>>>>> Skip jffs.o (missing directory)
+>>>>>>>>>> Skip msdos.o (already exists)
+>>>>>>>>>> Skip umsdos.o (missing directory)
+>>>>>>>>>> Skip vfat.o (already exists)
+>>>>>>>>>> Building btrfs.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/btrfs/super.o
+  CC [M]  fs/btrfs/ctree.o
+  CC [M]  fs/btrfs/extent-tree.o
+  CC [M]  fs/btrfs/print-tree.o
+  CC [M]  fs/btrfs/root-tree.o
+  CC [M]  fs/btrfs/dir-item.o
+  CC [M]  fs/btrfs/file-item.o
+  CC [M]  fs/btrfs/inode-item.o
+  CC [M]  fs/btrfs/inode-map.o
+  CC [M]  fs/btrfs/disk-io.o
+  CC [M]  fs/btrfs/transaction.o
+  CC [M]  fs/btrfs/inode.o
+fs/btrfs/inode.c: In function 'run_delalloc_nocow':
+fs/btrfs/inode.c:953: warning: 'extent_type' may be used uninitialized in this function
+  CC [M]  fs/btrfs/file.o
+  CC [M]  fs/btrfs/tree-defrag.o
+  CC [M]  fs/btrfs/extent_map.o
+  CC [M]  fs/btrfs/sysfs.o
+  CC [M]  fs/btrfs/struct-funcs.o
+  CC [M]  fs/btrfs/xattr.o
+  CC [M]  fs/btrfs/ordered-data.o
+fs/btrfs/ordered-data.c: In function 'tree_search':
+fs/btrfs/ordered-data.c:136: warning: 'prev' may be used uninitialized in this function
+  CC [M]  fs/btrfs/extent_io.o
+  CC [M]  fs/btrfs/volumes.o
+  CC [M]  fs/btrfs/async-thread.o
+  CC [M]  fs/btrfs/ioctl.o
+  CC [M]  fs/btrfs/locking.o
+  CC [M]  fs/btrfs/orphan.o
+  CC [M]  fs/btrfs/ref-cache.o
+  CC [M]  fs/btrfs/export.o
+  CC [M]  fs/btrfs/tree-log.o
+  CC [M]  fs/btrfs/acl.o
+  CC [M]  fs/btrfs/free-space-cache.o
+  CC [M]  fs/btrfs/zlib.o
+  CC [M]  fs/btrfs/compression.o
+  LD [M]  fs/btrfs/btrfs.o
+  MODPOST 49 modules
+  CC      fs/btrfs/btrfs.mod.o
+  LD [M]  fs/btrfs/btrfs.ko
+>>>>>>>>>> Building tux3.o (1nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+make[1]: *** No rule to make target `fs/tux3/tux3.o'.  Stop.
+make: *** [fs/tux3/tux3.ko] Error 2
+>>>>>>>>>> Building tux3.o (2nd attempt)...
+  CHK     include/linux/version.h
+  CHK     include/linux/utsrelease.h
+  SYMLINK include/asm -> include/asm-x86
+  CALL    scripts/checksyscalls.sh
+  CC [M]  fs/tux3/balloc.o
+  CC [M]  fs/tux3/btree.o
+  CC [M]  fs/tux3/dir.o
+  CC [M]  fs/tux3/dleaf.o
+  CC [M]  fs/tux3/filemap.o
+  CC [M]  fs/tux3/iattr.o
+  CC [M]  fs/tux3/ileaf.o
+  CC [M]  fs/tux3/namei.o
+  CC [M]  fs/tux3/inode.o
+  CC [M]  fs/tux3/super.o
+  CC [M]  fs/tux3/xattr.o
+  CC [M]  fs/tux3/log.o
+  CC [M]  fs/tux3/commit.o
+  CC [M]  fs/tux3/utility.o
+  LD [M]  fs/tux3/tux3.o
+  MODPOST 50 modules
+  CC      fs/tux3/tux3.mod.o
+  LD [M]  fs/tux3/tux3.ko

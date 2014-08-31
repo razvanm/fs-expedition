@@ -1,0 +1,8 @@
+echo fs major extsyms > extsyms
+for i in `seq 0 29`
+do
+    echo 2.6.$i
+    ./extsyms.py ../linux-2.6.$i.obj  $i >> extsyms
+done
+
+sed -i 's/ext4dev/ext4/'

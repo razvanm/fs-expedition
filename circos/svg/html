@@ -1,0 +1,6 @@
+for f in *.png
+do
+    fs=`echo $f | cut -d '.' -f 4`
+    fs=`basename $fs -all`
+    echo "<a href='circos/svg/`basename $f .png`.svg'><img src='circos/svg/$f' title='$fs'></a>"
+done

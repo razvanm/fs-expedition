@@ -1,0 +1,17 @@
+./circos.py < ../summary.tux3 > summary.tux3.circos
+for fs in `cut -d ' ' -f 1 ../summary.tux3 | sort | uniq | grep -v '^fs'`
+do
+    fs=`basename $fs .o`
+    echo $fs
+    ./circos-highlights-one.py $fs.o < ../summary.tux3 > data/summary.tux3.circos-highlights.$fs-all
+    ./circos-ribbons-one.py $fs.o < ../summary.tux3 > data/summary.tux3.circos-ribbons.$fs-all
+    sed -e "s/pairwise msdos/pairwise $fs/" \
+	-e "s/msdos-all/$fs-all/" \
+	-e "s/ $fs:/ $fs:5*/" \
+	-e "s/;$fs:/;$fs:5*/" \
+	circos-ribbons.conf > circos-ribbons-tmp.conf
+    ~/local/src/circos-0.49/bin/circos -conf circos-ribbons-tmp.conf
+    sed -i -e 's/text-anchor: start"/text-anchor: start; font-family: Helvetica LT Condensed"/' \
+	-i -e 's/text-anchor: end"/text-anchor: end; font-family: Helvetica LT Condensed"/' \
+	svg/summary.tux3.circos.$fs-all.svg
+done

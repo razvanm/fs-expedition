@@ -1,0 +1,94 @@
+Dataset
+
+The main dataset of the project will consist of the .o files for
+various filesystems for various versions of the 2.6 Linux kernel. All
+the modules are build in the most complex configuration (make
+allmodconfig). Most of them are compiled using GCC 4.1.
+
+Plots
+
+Here are a bunch of plots that I had in mind.
+
+(1) Summary plot showing the success of the compilation process.
+
+    http://farm4.static.flickr.com/3461/3347815417_09a5de9901_o.png
+
+(2) Big plot showing the 50 most popular external symbols with side
+plots showing the distribution of all the external symbols over the
+filesystems, the distribution of the filesystems over the system
+calls.
+
+    http://farm4.static.flickr.com/3553/3491835653_6eb632d476_o.png
+
+Excerpts from this plot can be discussed individually. For example the
+lack of register_filesystem/unregister_filesystem, kmem_*,
+kmap/kunmap, etc.
+
+(3) Heatmap of filesystems showing the amount of external symbols they
+share. Something to try is to normalized the numbered of shared
+external symbols with the total number of external symbols for each
+filesystem. This will make the heatmap asymmetric.
+
+(4) Some plots with circos is also something worth trying. Each
+filesystem corresponds to a chromozom and an external symbol corresponds
+to a certain position in the chromozom. The same external symbol would
+induce a link between two chrmozomes and hopefully, an interesting
+visual pattern in the circos representation.
+
+(5) Phylogeny using the par tool from PHYLIP. The output is a tree 
+that is draw using ASCII characters. The good news is that the output
+also contains list with the weight of all the edges so I could
+reconstruct the tree using this information.
+
+The phylogeny tree for only one version of the kernel is pretty clean
+and it looks nice even in ASCII mode. The one that includes all the
+2.6 versions is messier. There are two ways I'm thinking of
+visualizing it: as an animation in which each frame is the tree for a
+single kernel version or one single image which. The single image case
+might be doable either using circos (a kernel version will be a
+chromosome, the filesystems will be regions inside a chromosome) or
+hand tuning using a vector editor (Inkscape should work).
+
+(6) Hierarchical clustering using R. Hierarchical clustering consists
+in recursively merging similar entities in clusters based on their
+similarity. There are bunch of strategies are already available in R.
+One interesting thing to do is try all of them and see which one make
+sense. I briefly tested this on one kernel version but this should
+also work when all the kernel version are included.
+
+(7) So far I considered each external symbol as a single entity.
+
+    http://farm4.static.flickr.com/3448/3348866720_27b16b459d_o.png
+
+In reality these symbols can be grouped into families (APIs). A
+trivial way to create identified these APIs is based on the
+prefix. For example: kmem_*, d_*, jdb_*, jdb2_*, etc. A more
+sophisticated way of grouping is by looking of the combination in which
+the symbols appear. These is similar a little with the hierarchical
+clustering in (6) but is not exactly the same.
+
+(8) As Linux kernel evolves over time and new services are added. Some
+of these might be reflected in the the external symbols. Trying to see
+if this really true and to what extend is happening would be another
+interesting thing to do.
+
+---
+
+An interesting idea is to do some sort of clustering of the external
+calls based on their names. Many, but not all, have a common prefix
+(__, d_, kmem_, etc).
+
+  -- 29 Apr, 2009
+
+------------------------------
+
+2.6.13 - 2.6.28
+
+  o gcc 4.1.3
+  o binutils 2.18
+
+2.6.0 - 2.6.12
+
+  o gcc 2.95.3
+  o binutils 2.18
+

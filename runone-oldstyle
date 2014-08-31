@@ -1,0 +1,32 @@
+ROOT=`pwd`
+v=$1
+
+#rm -rf linux-2.6.$v
+rm -rf linux-2.6.$v.obj
+echo Unpack linux-2.6.$v.tar.bz2
+if [[ ! -d linux-2.6.$v ]]
+then
+	time tar xjf linux-2.6.$v.tar.bz2
+fi
+if [[ ! -d linux-2.6.$v.obj ]]
+then
+	mkdir linux-2.6.$v.obj
+fi
+cd linux-2.6.$v
+#make mrproper
+#make allnoconfig
+make prepare
+for f in `cut -d ' ' -f 1 $ROOT/config`
+do
+    echo Build $f
+    pushd .
+    cd fs/$f
+    #export CONFIG_MODULES=y
+    export `grep ^$f\  $ROOT/config | cut -d ' ' -f 2`=m
+    #make -C ../../ M=`pwd` CC=gcc-3.4
+    make -C ../../ SUBDIRS=`pwd` modules
+    cd ../..
+    cp -ra fs/$f/`grep ^$f\  $ROOT/config | cut -d ' ' -f 3` ../linux-2.6.$v.obj
+    popd
+done
+cd ..

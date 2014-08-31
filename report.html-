@@ -1,0 +1,349 @@
+<html>
+<head>
+	<title></title>
+	<meta name="author" content="Razvan Musaloiu-E." />
+	<meta name="date" content="2009-05-01" />
+	<meta name="keywords" content="" />
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body><div id="everything">
+
+<h1 align="center">Phylogeny of the Linux File Systems</h1>
+<h3 align="center">Răzvan Musăloiu-E.<br /><tt>razvanm@cs.jhu.edu</tt></h3>
+
+<h2>Abstract</h2>
+
+<h2>Introduction</h2>
+
+
+<h2>Linux Kernel 2.6.29 + tux3</h2>
+
+<p>In this (big) section we are going to explore a certain version of
+  the Linux Kernel, the <em>tux3</em> branch from March 14, 2009.
+  This version contains the Linux tree up to March 10. The 2.6.29 was
+  released on March 23 so this is the exact final version. I picked it
+  because it contains the <em>btrfs</em> and, at the time of the
+  writing of this report, it is the last one that was published by
+  Daniel Phillips, the creator of the <em>tux3</em>.</p>
+
+<div class="figure">
+  <img src="summary.tux3.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span> This
+    is a map of the external symbols for all the file systems from the
+    tux3 git repository from March 14, 2009. The last merge of the
+    branch with Linus was on March 10. Each tick represents an
+    external symbol. The file systems are show in alphabetical
+    order. The big and compact chunk of external symbols related to
+    <em>jbd</em> and <em>jbd2</em> are visibile for <em>ext3</em>
+    and <em>ext4</em>. The fact that <em>ocfs2</em> is also
+    making use of <em>jbd2</em> is also noticeable. Later in this
+    section we will see how this representation looks when is
+    reorganized based on similarities between file systems.
+  </div>
+</div>
+
+<h3>The 50 Most Popular External Symbols</h3>
+
+<div class="figure">
+  <img src="summary.tux3.big.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+  </div>
+</div>
+
+<h3>Similarity</h3>
+
+<div class="figure">
+  <img src="summary.tux3.heatmap.hamm.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Heatmap using Hamming distance.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.heatmap.hamm.ward.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Heatmap using Hamming distance and Ward algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.hclust.hamm.ward.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Hamming distance and Ward algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.heatmap.hamm.complete.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Heatmap using Hamming distance, Complete
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.hclust.hamm.complete.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Hamming distance, Complete
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.heatmap.hamm.average.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Heatmap using Hamming distance, Average
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.hclust.hamm.average.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Hamming distance, Average
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.heatmap.hamm.mcquitty.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Hamming distance, McQuitty algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.hclust.hamm.mcquitty.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Hamming distance and McQuitty algorithm.
+  </div>
+</div>
+
+
+<p>A few more dendrograms using the two more metrics. Canberra
+  distance is the equivalent with the number of different external
+  symbols while the binary distance is a proportional version of the
+  Hamming distance.</p>
+
+
+<div class="figure">
+  <img src="summary.tux3.hclust.canberra.ward.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and Ward algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.tick.canberra.ward.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and Ward algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.hclust.canberra.complete.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and Complete algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.tick.canberra.complete.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and Complete algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.hclust.canberra.average.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and Average algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.tick.canberra.average.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and Average algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.hclust.canberra.mcquitty.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and McQuitty algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.tick.canberra.mcquitty.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and McQuitty algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.hclust.canberra.single.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and single algorithm.
+  </div>
+</div>
+
+<div class="figure">
+  <img src="summary.tux3.tick.canberra.single.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+    Dendrogram using Canberra distance and single algorithm.
+  </div>
+</div>
+
+
+
+
+<!-- <div class="figure"> -->
+<!--   <img src="summary.tux3.hclust.binary.ward.png" /> -->
+<!--   <div class="caption"><span class="sans"><b>Figure ?</b></span> -->
+<!--     Dendrogram using binary distance and Ward algorithm. -->
+<!--   </div> -->
+<!-- </div> -->
+
+<!-- <div class="figure"> -->
+<!--   <img src="summary.tux3.hclust.binary.complete.png" /> -->
+<!--   <div class="caption"><span class="sans"><b>Figure ?</b></span> -->
+<!--     Dendrogram using binary distance and Complete algorithm. -->
+<!--   </div> -->
+<!-- </div> -->
+
+<!-- <div class="figure"> -->
+<!--   <img src="summary.tux3.hclust.binary.average.png" /> -->
+<!--   <div class="caption"><span class="sans"><b>Figure ?</b></span> -->
+<!--     Dendrogram using binary distance and Average algorithm. -->
+<!--   </div> -->
+<!-- </div> -->
+
+<!-- <div class="figure"> -->
+<!--   <img src="summary.tux3.hclust.binary.mcquitty.png" /> -->
+<!--   <div class="caption"><span class="sans"><b>Figure ?</b></span> -->
+<!--     Dendrogram using binary distance and McQuitty algorithm. -->
+<!--   </div> -->
+<!-- </div> -->
+
+<p>Some reorderings of the inital plot.</p>
+
+<!-- <div class="figure"> -->
+<!--   <img src="summary.tux3.reordered.canberra.png" /> -->
+<!--   <div class="caption"><span class="sans"><b>Figure ?</b></span> -->
+<!--   </div> -->
+<!-- </div> -->
+
+<!-- <div class="figure"> -->
+<!--   <img src="summary.tux3.reordered.binary.png" /> -->
+<!--   <div class="caption"><span class="sans"><b>Figure ?</b></span> -->
+<!--   </div> -->
+<!-- </div> -->
+
+
+<div class="figure">
+  <img src="circos2/summary.tux3.circos.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+
+  </div>
+</div>
+
+
+<div class="figure">
+  <img src="treemap/treemap-lt.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+
+  </div>
+</div>
+
+
+<h2>Conclusions</h2>
+
+<h2>The Building Process</h2>
+
+<p>Trying to build all the file systems from 2.6.x is quite a
+challenge in itself due the span of more than 5 years which passed
+from 2.6.0 (December 2003) to 2.6.29 (March 2009).
+Luckily, <tt>kbuild</tt>, the makefile-based build system did not
+change that much and I had to divide the releases in two groups: 2.6.0
+to 2.6.12 (older half) and 1.6.13 o 2.6.29 (newer half).  For the
+first one I had to use the<p/>
+
+<div class='command'><tt>make -C ... SUBDIRS=...</tt><em>module.o</em></div>
+
+<p>command while for the second I was able to use a simpler one</p>
+
+<div class='command'><tt>make fs/</tt><em>fs/module.ko</em>.</div>
+
+<p>In both cases the configuration commands were the following:</p>
+
+<div class='command'><tt>make mrproper<br />
+make allmodconfig<br />
+make prepare</tt></div>
+
+<p>On the toolchain front I used the latest binutils (2.19.1) from Debian
+5.0 <em>Lenny</em> and two GCC vresion: the 4.1.2, the latest GCC from
+the 4.1 series that is available in Debian Unstable <em>Sid</em> for
+the newer half and a manually-compiled 2.95.3 for the older one. to
+get 2.6.16 to 2.6.21 to compile I also had to manually add an include
+for <tt>limits.h</tt> in the <tt>scripts/mod/sumversion.c</tt>.</p>
+
+<p>From a storage perspective, the 30 kernel trees weight about 1.1 GB
+in tar.bz2 form, 7.4 GB unpacked and 12.4 GB when all the file systems
+are compiled. To put things into perspective, after <tt>make
+bzImage</tt> the 2.6.29 is 1.3 GB and gets to 3.8 GB after <tt>make
+modules</tt>. This is, of course, an uppper bound because the kernel
+was configured with <tt>make allmodconfig</tt>. A few more details:
+the bzImage obstained this way was 3.7 MB and the 2595 .ko files that
+were produces weighted 889 MB.</p>
+
+
+
+<div class="figure">
+  <img src="building.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+  </div>
+</div>
+
+
+<div class="figure">
+  <img src="summary.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>  The
+    scorecard of the compilation success. The line between 2.6.12 and
+    2.6.13 indicates the place where the make command had to be
+    slightly changed. The number of rows is 65. the number of succeful
+    compiled file systems for 2.6.29 is 54. <em>ext4</em> shows up
+    with two names: <em>ext4</em> and <em>ext4dev</em>. A notable
+    thing is the "no file system left behind" syndrome: once it got in
+    the tree, a file system almost never dies. There is only one true
+    exceptions for this rule: <em>intermezzo</em>. The other two are
+    devfs and jffs which were deprecated in favor of their
+    descendants, <em>sysfs</em> and <em>jffs2</em>.  <br /> <br /> A
+    more elaborate view of the timeline of the releases of the Linux
+    kernel is in a separate section at the end of this document.
+  </div>
+</div>
+
+<h2>Timeline of the Linux Kernel releases</h2>
+
+<div class="figure">
+  <img src="timeline/timeline.png" />
+  <div class="caption"><span class="sans"><b>Figure ?</b></span>
+  Timeline of the Linux Kernel releases. In gray are depicted the
+  development branches and the small ticks from the the 2.6 branch are
+  the minor releases. The minor that sticks out is the 2.6.16. The
+  data was extracted from the timestamps of the files served
+  by <em>kernel.org</em>. Tho dates, for 2.1.25 and 2.1.26 were wrong
+  and were manually adjusted. The only omitted releases are the
+  2.2.0pre1 to 2.2.pre9.
+    <br />
+    <br />
+    Note that the proportion between the left (stable) and right
+  (development) axes is 1 to 3.
+  </div>
+</div>
+
+
+
+</div>
+</body>
+</html>

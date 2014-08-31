@@ -1,0 +1,5 @@
+for f in *.svg
+do
+    echo $f
+    convert $f -resize 128x128 -unsharp 1x1+1 `basename $f .svg`.png
+done

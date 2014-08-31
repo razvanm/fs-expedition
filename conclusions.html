@@ -1,0 +1,78 @@
+<html>
+<head>
+  <title>A Visual Expedition Inside the Linux File Systems - Conclusions</title>
+  <meta name="author" content="Razvan Musaloiu-E." />
+  <meta name="keywords" content="file systems visual expedition filesystems" />
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body><div id="everything">
+
+<h1>Conclusions</h1>
+
+<!-- <div style="text-align: center; margin-bottom: 3em;"> -->
+<!--   <em>I photograph to see what the world looks like in photographs.</em><br /> -->
+<!--   <div style="margin-left: 30em;">&mdash;Garry Winogrand (1928&ndash;1984)</div> -->
+<!-- </div> -->
+
+<p>This is the end of this expedition. There are a lot of things that
+  I didn't had time to try. Here are a few of them.</p>
+
+<p>As we saw, the number of external symbols is quite big. Even one
+  file system can have hundreads and we end up with more than a
+  thousand symbols when we consider a decent selection of file
+  systems. This makes tracking each symbol individually not very
+  informative. One way to reduce the complexity is to try to classify
+  them. Doing this manually could be accomplished by somebody familiar
+  with that respective kernel but some automatic method might be also
+  attempted. With this classification in place, the way the file
+  systems are using various classes of symbols could become more
+  meaningful.<p/>
+
+<p>Another direction, which increases complexity, would be to take in
+  consideration not only that a kernel module is using a certain
+  external symbol but also from how many different places from inside
+  its code it is doing this. This information is contained in the
+  relocation table of the object file and it can be easily extracted
+  using <em>objdump</em>.</p>
+
+<p>From the personal side I can say that figuring how to get all the
+  Linux modules was kind of cool and learning about the way
+  hierarchical clustering works was very informative. The fact that
+  BSDs have a system release with each of their kernels (or conversely,
+  that they make a new kernel release with each system release) made
+  them much easier to deal with. Their archives, which contain
+  binaries going all the way back to the very beginning, represents a
+  very valuable resource which could be used to track their
+  evolution.</p>
+
+<p>Some trivia. There are 78 regular figures (out of which 10 have
+  high-detail versions) and 4 animations. The building of the
+  phylogenetic tree for all the 2.6.x took about tree days of
+  continuous running on a P4 at 2.8 GHz. The memory consumption was
+  decent though, only 200 MB. Before settling to the final Circos
+  graph I generated more than 50 circular plots showing the relations
+  between each file systems with everybody else. All of them look very
+  similar though. Except the circos plot and the the treemap all the
+  others are done in R. The treemap was obtained using
+  GrandPerspective and Inkscape.</p>
+
+<p>Thank you for reading! And once again, if you find any mistake
+  please let <a href="mailto:razvanm@cs.jhu.edu">me</a> know.</p>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-319751-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<script src="http://razvan.musaloiu.com/software/utracker/utracker.js" type="text/javascript"></script>
+</body>
+</html>

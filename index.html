@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>A Visual Expedition Inside the Linux File Systems</title>
+  <meta name="author" content="Razvan Musaloiu-E." />
+  <meta name="keywords" content="file systems visual expedition filesystems" />
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="jquery.js"></script>
+</head>
+
+<body style="background-color: #7f7f7f;">
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  $(".tinypic").hover(function(e) {
+    $("#bigpic").attr("src", $(this).attr("src"));
+  }, null)
+})
+
+</script>
+
+<!-- <img style="position: absolute;" src="front.png" /> -->
+
+<div style="margin: 1em auto; width: 60em; background-color: #ffffff; border: 1px solid #5f5f5f; position: relative;">
+<div style="position: absolute; top: 2pt; right: 5pt; color: #7f7f7f; font-size: 8pt;" class="sans">Last update: June 16, 2009</div>
+
+
+<div style="float: left; margin: 0em 1.5em 3em 1.5em; width: 15em; padding-top: 1em;">
+  <h1 style="text-align: center">A Visual Expedition Inside the Linux File Systems</h1>
+  <h3 style="font-weight: normal; text-align: center; margin-top: 10ex;">
+    Răzvan Musăloiu-E.<br />
+    <tt style="font-size: 9pt; position: relative; top: -1ex;">razvanm@cs.jhu.edu</tt>
+  </h3>
+
+  <div style='height: 3em;'></div>
+  <img src="front-1.png" id="bigpic"/><br />
+  <div style='height: 1em;'></div>
+  <img src="front-1.png" width=50 height=50 class="tinypic"/>
+  <img src="front-2.png" width=50 height=50 class="tinypic"/>
+  <img src="front-3.png" width=50 height=50 class="tinypic"/><br />
+  <img src="front-4.png" width=50 height=50 class="tinypic"/>
+  <img src="front-5.png" width=50 height=50 class="tinypic"/>
+  <img src="front-6.png" width=50 height=50 class="tinypic"/>
+
+</div>
+
+<div style="float: left; margin: 1em 1.5em 3em 1.5em; width: 20em; text-align: left;">
+
+<!-- <div style="text-align: center;"><h4>Abstract</h4></div> -->
+<!-- <div style="margin: 0 1em 0 1em; font-size: 10pt; text-align: left;"> -->
+<!-- </div> -->
+
+<h5 style="text-align: center; margin-bottom: 0em; padding-bottom: 0.25em; border-bottom: 1px solid black;">Table of Contents</h5>
+
+<h4 style="margin-top: 0.5em;"><a href="intro.html">Introduction</a></h4>
+<div class="summary">
+  Why? How?
+</div>
+
+<h4><a href="tux3.html">Linux Kernel 2.6.29 + tux3</a></h4>
+<div class="summary">
+  A through study of one tree.
+</div>
+
+<h4><a href="2.6.x.html">Linux Kernel 2.6.x</a></h4>
+<div class="summary">
+  Overview of all 2.6.x releases.
+</div>
+
+<h4><a href="bsd.html">The BSD Family</a></h4>
+<div class="summary">
+  FreeBSD, NetBSD, OpenBSD and MacOS X.
+</div>
+
+<h4><a href="conclusions.html">Conclusions</a></h4>
+<div class="summary">
+  Some parting thoughts.
+</div>
+
+<div style='height: 3ex;'></div>
+
+<div style="text-align: center; font-size: 8pt;">&diams; &diams; &diams;</div>
+
+<div style='height: 1ex;'></div>
+
+<h4 class='appendix'><a href="building.html">Appendix A: The Building Process</a></h4>
+<div class="summary">
+  How the 1377 file systems from Linux Kernel 2.6.x were build.
+</div>
+
+<h4 class='appendix'><a href="timelines.html">Appendix B: Timelines</a></h4>
+<div class="summary">
+  Timelines of all releases for Linux Kernel, FreeBSD, NetBSD and OpenBSD.
+</div>
+
+<h4 class='appendix'><a href="map.html">Appendix C: External symbols for 2.6.29 + tux3</a></h4>
+<div class="summary">
+  A detailed map of all the external symbols for the file systems
+  compiled for Linux Kernel 2.6.29 + tux3.
+</div>
+
+<div style='height: 3ex;'></div>
+
+<div style="text-align: center; font-size: 8pt;">&loz; &loz; &loz;</div>
+
+<div style='height: 3ex;'></div>
+
+<div style="font-size: 9pt;">
+  <span class="sans"><b>Download:</b></span>
+    <a href="p.pdf">PDF (50MB)</a>,
+    <a href="p.100dpi.pdf">PDF (4.5MB)</a>.
+
+  <div style="margin-left: 2em;">
+    These PDFs are work in progress. All the figures, except the one
+    made in <a href="tux3.html#circos">circos</a>, are bitmaps. In the
+    final version all of them will be vectorial.
+  </div>
+</div>
+
+</div>
+
+<div style="float: left; margin: 1em 1.5em 3em 1.5em; width: 15em; text-align: left;">
+<h5 style='text-align: center; padding-bottom: 0.25em; border-bottom: 1px solid black;'>List of Figures</h5>
+
+<div id="tof" class="summary">
+  <span class="sans" style="font-size: 9pt;"><b>Introduction</b></span><br />
+  <a href="intro.html#calls">Chain of calls problem</a><br />
+  
+  <div style='height: 0.5em;'></div>
+  <span class="sans" style="font-size: 9pt;"><b>Linux Kernel 2.6.29 + tux3</b></span><br />
+  <a href="tux3.html#map">Map of the external symbols</a><br />
+  <a href="tux3.html#extsyms">Number of external symbols</a><br />
+  <a href="tux3.html#extsyms-by-category">Number of external symbols by categories</a><br />
+  <a href="tux3.html#popular-50">The 50 most popular external symbols</a><br />
+  <a href="tux3.html#heatmap">Heatmap of the Hamming distances</a><br />
+  <a href="tux3.html#hclust">Hierarchical clustering</a><br />
+  <a href="tux3.html#hclust-single">Single linkage</a><br />
+  <a href="tux3.html#hclust-complete">Complete linkage</a><br />
+  <a href="tux3.html#hclust-average">Group average</a><br />
+  <a href="tux3.html#hclust-ward">Ward's method</a><br />
+  <a href="tux3.html#hclust-mcquitty">McQuitty's method</a><br />
+  Clustering using Hamming distance and<br />
+  <div style="margin-left: 2em;">
+     <a href="tux3.html#heatmap-ward">Ward's method</a> (<a href="tux3.html#dendrogram-ward">dendrogram</a>)<br />
+     <a href="tux3.html#heatmap-complete">Complete linkage</a> (<a href="tux3.html#dendrogram-complete">dendrogram</a>)<br />
+     <a href="tux3.html#heatmap-average">Group average</a> (<a href="tux3.html#dendrogram-average">dendrogram</a>)<br />
+     <a href="tux3.html#heatmap-mcquitty">McQuitty's method</a> (<a href="tux3.html#dendrogram-mcquitty">dendrogram</a>)<br />
+  </div>
+  Clustering using Canberra distance and<br />
+  <div style="margin-left: 2em;">
+     <a href="tux3.html#canberra-ward">Ward's method</a>,
+     <a href="tux3.html#canberra-complete">Complete linkage</a><br />
+     <a href="tux3.html#canberra-average">Group average</a>,
+     <a href="tux3.html#canberra-mcquitty">McQuitty's method</a><br />
+     <a href="tux3.html#canberra-single">Single linkage</a><br />
+  </div>
+  <a href="tux3.html#pars">Phylogenetic tree</a>
+     (<a href="tux3.html#pars-circos">360&deg;</a>,
+     <a href="tux3.html#pars-circos-180">180&deg;</a>,
+     <a href="tux3.html#pars-circos-90">90&deg;</a>)<br />
+  <a href="tux3.html#circos">Circos</a><br />
+  <a href="tux3.html#treemap">Treemap</a><br />
+
+  <div style='height: 0.5em;'></div>
+  <span class="sans"><b>Linux Kernel 2.6.x</b></span><br />
+
+  <a href="2.6.x.html#extsyms1">Number of external symbols over time</a><br />
+  <a href="2.6.x.html#extsyms">Boxplots of the ext. symbols for each release</a><br />
+
+  Ranking based on
+  <div style="margin-left: 2em;">
+    <a href="2.6.x.html#longevity">longevity</a><br />
+    <a href="2.6.x.html#minmax">min and max number of symbols</a><br />
+    <a href="2.6.x.html#range">range or number of symbols</a><br />
+    <a href="2.6.x.html#last-first">the diff. between first and last appearance</a><br />
+    <a href="2.6.x.html#minmaxjump">the biggest increase and decrease</a><br />
+  </div>
+  <a href="2.6.x.html#rankings">Relations between the rankings</a><br />
+  Clustering using Hamming distance and<br />
+  <div style="margin-left: 2em;">
+     <a href="2.6.x.html#heatmap-ward">Ward's method</a> (<a href="2.6.x.html#hamming-ward">dendrogram</a>)<br />
+     <a href="2.6.x.html#heatmap-complete">Complete linkage</a> (<a href="2.6.x.html#hamming-complete">dendrogram</a>)<br />
+     <a href="2.6.x.html#heatmap-average">Group average</a> (<a href="2.6.x.html#hamming-average">dendrogram</a>)<br />
+     <a href="2.6.x.html#heatmap-mcquitty">McQuitty's method</a> (<a href="2.6.x.html#hamming-mcquitty">dendrogram</a>)<br />
+  </div>
+  Clustering using Canberra distance and<br />
+  <div style="margin-left: 2em;">
+     <a href="2.6.x.html#canberra-ward">Ward's method</a>,
+     <a href="2.6.x.html#canberra-complete">Complete linkage</a><br />
+     <a href="2.6.x.html#canberra-average">Group average</a>,
+     <a href="2.6.x.html#canberra-mcquitty">McQuitty's method</a><br />
+     <a href="2.6.x.html#canberra-single">Single linkage</a><br />
+  </div>
+  <a href="2.6.x.html#pars">Phylogenetic tree</a>
+
+  <div style='height: 0.5em;'></div>
+  <span class="sans"><b>The Building Process</b></span><br />
+  <a href="building.html#sizes">Various sizes of the 2.6.x kernels</a><br />
+  <a href="building.html#scorecard">Scorecard of the compilation success</a><br />
+
+  <div style='height: 0.5em;'></div>
+  <span class="sans"><b>Timelines</b></span><br />
+  <a href="timelines.html#linux">Linux Kernel</a>,
+  <a href="timelines.html#freebsd">FreeBSD</a>,
+  <a href="timelines.html#netbsd">NetBSD</a>,
+  <a href="timelines.html#openbsd">OpenBSD</a><br />
+
+  <div style='height: 0.5em;'></div>
+  <span class="sans"><b>External symbols for 2.6.29 + tux3</b></span><br />
+  <a href="map.html#map">Detailed map of external symbols</a><br />
+
+</div>
+
+</div>
+
+<div style="clear: both; margin: 0 auto; padding-bottom: 1em; width: 41em; font-size: 9pt; text-align: left; color: #7f7f7f;">
+  This is an exercise in visualization and kernel exploration. I'm not
+  an expert in either of them but I like file systems and I also find
+  great pleasure in creating visual representations of the things
+  around me. &mdash;RazvanME
+</div>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-319751-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<script src="http://razvan.musaloiu.com/software/utracker/utracker.js" type="text/javascript"></script>
+</body>
+</html>

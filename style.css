@@ -1,0 +1,152 @@
+body {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+/*  font-family: 'Lucida Sans', serif;*/
+}
+#everything {
+  margin: 0 auto;
+  padding: 1em 3em 3em 3em;
+  min-width: 768px;
+/*  max-width: 45em; */
+  text-align: justify;
+}
+h1, h2, h3, h4 {
+  font-family: 'Helvetica', serif;
+}
+
+h4.appendix {
+ font-size: 10pt;
+ margin: 21px 0 21px 0;
+}
+sup, sub { line-height: 80%; }
+sup { font-size: 90%; }
+sub { font-size: 70%; }
+hr {
+  border: none;
+  border-top: 1px solid black;
+  margin: 2em 0;
+}
+dt { float: left; margin-right: 1em;}
+dd { margin-bottom: 0.75em; }
+
+.sans { font-family: Helvetica, sans-serif; }
+#tof .sans { margin-left: -1em; }
+.reverse {
+color: white; background-color: black;
+font-family: Helvetica, sans-serif;
+padding: 0 0.25em;
+}
+
+div.figure {
+  margin: 3em;
+  font-size: 90%;
+  text-align: center;
+}
+div.figure div.caption {
+  text-align: justify;
+  padding: 1em 3em;
+  margin: 0 auto;
+  width: 40em;
+}
+
+p {
+  line-height: 133%;
+  margin: 0;
+  margin-bottom: 1ex;
+}
+p+p, p.indent{
+  text-indent: 1.5em;
+}
+p.noindent {
+  text-indent: 0;
+}
+p.spacebefore {
+  margin-top: 0.75em;
+}
+p.paragraph {
+  text-indent: 0;
+  margin-top: 1em;
+}
+p.paragraph>strong { margin-right: 1em; }
+.VoteBox, .Auditorium { 
+  font-variant: small-caps;
+}
+
+acronym {
+  /*text-transform: lowercase;
+  font-variant: small-caps; -- SIGH*/
+  text-transform: uppercase;
+  font-size: 90%;
+  letter-spacing: 0.05em;
+}
+
+tr.linebelow>td { border-bottom: 1px solid black; }
+tr.lineabove>td { border-top: 1px solid black; }
+
+tt {
+  font-family: 'Courier';
+}
+
+.command {
+  margin: 1ex 0 1ex 5em;
+}
+
+.bibliography {
+  text-align: left;
+  font-size: 90%;
+  line-height: 120%;
+}
+.footnotes {
+  font-size: 90%;
+  line-height: 120%;
+}
+.abstract {
+  padding: 0.5em 2em 1.5em 2em;
+  background-color: #eee;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: #02c;
+}
+a:link, a:visited, h4 a:link, h4 a:visited, div.summary a:link, div.summary a:visited {
+  color: black;
+}
+a:hover, a:visited:hover {
+  text-decoration: underline;
+}
+
+a img {
+  border: 0;
+}
+
+.summary {
+  clear: both;
+  margin: -3ex 0 0 1em;
+  width: 25em;
+  font-size: 9pt;
+  text-align: left;
+}
+
+hr.sep {
+  width: 10em;
+  margin: 0 auto;
+}
+
+p a {
+  border-bottom: 1px dotted black;
+}
+
+p a:hover {
+  border-bottom-style: none;
+}
+
+.tinypic {
+  cursor: pointer;
+}
+
+.debug {
+  border: 1px solid black; 
+}

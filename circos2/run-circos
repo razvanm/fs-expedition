@@ -1,0 +1,14 @@
+./circos.py ../summary.tux3 ../linux-tux3/obj.i386/System.map > summary.tux3.circos
+./circos-counts.py ../summary.tux3 ../linux-tux3/obj.i386/System.map > summary.tux3.circos.counts
+./circos-unique.py < ../summary.tux3 > summary.tux3.circos.unique
+./circos-unique-background.py < ../summary.tux3 > summary.tux3.circos.unique-background
+./circos-external-ribbons.py ../summary.tux3 ../summary.tux3.exported > summary.tux3.circos.ribbons
+~/local/src/circos-0.49/bin/circos -conf circos.conf
+
+for svg in *.svg
+do
+    sed -e 's/text-anchor: start"/text-anchor: start; font-family: Helvetica LT CondensedLight"/' \
+        -e 's/text-anchor: end"/text-anchor: end; font-family: Helvetica LT CondensedLight"/' \
+        -i $svg
+done
+
